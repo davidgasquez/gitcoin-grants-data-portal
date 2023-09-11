@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Build Docker
+      run: docker build -t davidgasquez/ggdp:latest .
+
+    - name: Run Make
+      run: docker run --rm -v $PWD/:/workspaces/gitcoin-grants-data-portal/ davidgasquez/ggdp:latest make run
