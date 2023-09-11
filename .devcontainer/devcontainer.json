@@ -1,47 +1,48 @@
 {
-	"name": "Gitcoin Grants Data Portal",
-	"build": {
-		"dockerfile": "../Dockerfile",
-		"context": ".."
-	},
-	"features": {
-		"ghcr.io/rocker-org/devcontainer-features/quarto-cli:latest": {}
-	},
-	"customizations": {
-		"vscode": {
-			"settings": {
-				"quarto.render.previewType": "external",
-				"python.analysis.typeCheckingMode": "basic",
-				"files.associations": {
-					"*.sql": "jinja-sql"
-				},
-				"[jinja-sql]": {
-					"editor.formatOnSave": false
-				},
-				"[python]": {
-					"editor.defaultFormatter": "ms-python.black-formatter",
-					"editor.codeActionsOnSave": {
-						"editor.formatOnSave": true,
-						"source.fixAll": true,
-						"source.organizeImports": true,
-					},
-					"notebook.formatOnSave.enabled": true
-				}
-			},
-			"extensions": [
-				"charliermarsh.ruff",
-				"innoverio.vscode-dbt-power-user",
-				"ms-python.black-formatter",
-				"ms-python.isort",
-				"ms-python.python",
-				"ms-python.vscode-pylance",
-				"ms-toolsai.datawrangler",
-				"ms-toolsai.jupyter",
-				"quarto.quarto",
-				"redhat.vscode-yaml",
-				"tamasfe.even-better-toml",
-				"VisualStudioExptTeam.vscodeintellicode"
-			]
-		}
-	}
+  "name": "Gitcoin Grants Data Portal",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+  "features": {
+    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:latest": {}
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "quarto.render.previewType": "external",
+        "python.analysis.typeCheckingMode": "basic",
+        "dbt.queryLimit": 200,
+        "files.associations": {
+          "*.sql": "jinja-sql"
+        },
+        "[jinja-sql]": {
+          "editor.formatOnSave": false
+        },
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.black-formatter",
+          "editor.codeActionsOnSave": {
+            "editor.formatOnSave": true,
+            "source.fixAll": true,
+            "source.organizeImports": true,
+          },
+          "notebook.formatOnSave.enabled": true
+        }
+      },
+      "extensions": [
+        "charliermarsh.ruff",
+        "innoverio.vscode-dbt-power-user",
+        "ms-python.black-formatter",
+        "ms-python.isort",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.datawrangler",
+        "ms-toolsai.jupyter",
+        "quarto.quarto",
+        "redhat.vscode-yaml",
+        "tamasfe.even-better-toml",
+        "VisualStudioExptTeam.vscodeintellicode"
+      ]
+    }
+  }
 }

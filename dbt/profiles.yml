@@ -1,0 +1,18 @@
+default:
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('DATA_DIR') }}/dbt.duckdb"
+      threads: 8
+      extensions:
+        - httpfs
+        - parquet
+      settings:
+        enable_object_cache: true
+        enable_http_metadata_cache: true
+      external_root: "{{ env_var('DATA_DIR') }}"
+  target: dev
+
+config:
+  send_anonymous_usage_stats: False
+  use_colors: True

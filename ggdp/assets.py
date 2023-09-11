@@ -19,7 +19,7 @@ def chain_file_aggregator(json_name):
 
 
 @asset
-def passport_scores() -> pd.DataFrame:
+def raw_passport_scores() -> pd.DataFrame:
     file_url = f"{ALLO_INDEXER_URL}/passport_scores.json"
     df = pd.read_json(file_url)
     df = df.drop(columns=["error"])
@@ -30,15 +30,15 @@ def passport_scores() -> pd.DataFrame:
 
 
 @asset
-def projects() -> pd.DataFrame:
+def raw_projects() -> pd.DataFrame:
     return chain_file_aggregator("projects.json")
 
 
 @asset
-def prices() -> pd.DataFrame:
+def raw_prices() -> pd.DataFrame:
     return chain_file_aggregator("prices.json")
 
 
 @asset
-def rounds() -> pd.DataFrame:
+def raw_rounds() -> pd.DataFrame:
     return chain_file_aggregator("rounds.json")

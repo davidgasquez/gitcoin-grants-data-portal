@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: public
+    tables:
+      - name: raw_passport_scores
+        meta:
+          dagster:
+            asset_key: ["raw_passport_scores"]
+      - name: raw_projects
+        meta:
+          dagster:
+            asset_key: ["raw_projects"]
+      - name: raw_prices
+        meta:
+          dagster:
+            asset_key: ["raw_prices"]
+      - name: raw_rounds
+        meta:
+          dagster:
+            asset_key: ["raw_rounds"]
