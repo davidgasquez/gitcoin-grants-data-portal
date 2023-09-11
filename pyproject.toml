@@ -1,0 +1,50 @@
+[project]
+name = "ggdp"
+version = "1.0.0"
+dependencies = [
+    "altair",
+    "aiohttp",
+    "dagster",
+    "dagster-webserver",
+    "dagster-dbt",
+    "dagster-duckdb",
+    "dagster-duckdb-pandas",
+    "dbt-core",
+    "dbt-duckdb",
+    "duckdb",
+    "fsspec",
+    "ipykernel",
+    "itables",
+    "ipywidgets",
+    "matplotlib",
+    "nbclient",
+    "nbformat",
+    "numpy",
+    "pandas",
+    "pyarrow",
+    "regex",
+    "tqdm",
+]
+
+requires-python = ">=3.10, <3.12"
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+dev = ["dagit", "shandy-sqlfmt[jinjafmt]"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["ggdp"]
+
+[tool.dagster]
+module_name = "ggdp"
+
+[tool.sqlfmt]
+line_length = 120
+check = true
+fast = false
+dialect = "duckdb"
