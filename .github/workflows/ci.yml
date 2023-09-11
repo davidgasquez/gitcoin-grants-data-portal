@@ -19,3 +19,13 @@ jobs:
 
     - name: Run Make
       run: docker run --rm -v $PWD/:/workspaces/gitcoin-grants-data-portal/ davidgasquez/ggdp:latest make run
+    
+    - name: Upload to IPFS
+      uses: web3-storage/add-to-web3@v2
+      id: web3
+      with:
+        web3_token: ${{ secrets.WEB3_STORAGE_TOKEN }}
+        path_to_add: 'data'
+      
+    - run: echo ${{ steps.web3.outputs.cid }}
+    - run: echo ${{ steps.web3.outputs.url }}
