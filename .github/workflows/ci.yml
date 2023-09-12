@@ -19,6 +19,9 @@ jobs:
 
     - name: Run Make
       run: docker run --rm -v $PWD/:/workspaces/gitcoin-grants-data-portal/ davidgasquez/ggdp:latest make run
+      
+    - name: Publish Web
+      run: docker run --rm -v $PWD/:/workspaces/gitcoin-grants-data-portal/ davidgasquez/ggdp:latest quarto render reports/sandbox.ipynb -o index.html && mv index.html data/
     
     - name: Upload to IPFS
       uses: web3-storage/add-to-web3@v2
