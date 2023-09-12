@@ -18,6 +18,32 @@ def chain_file_aggregator(json_name):
     return df
 
 
+def round_file_aggregator(json_name):
+    fs = HTTPFileSystem(simple_links=True)
+    paths = fs.ls("https://indexer-grants-stack.gitcoin.co/data/")
+    paths = [path["name"] for path in paths if path["name"].split("/")[-1].isdigit()]
+
+    df = pd.DataFrame()
+
+    for path in paths:
+        chain_id = int(path.split("/")[-1])
+        chain_rounds = fs.ls(f"{path}/rounds/")
+        chain_rounds = [
+            round["name"]
+            for round in chain_rounds
+            if round["name"].split("/")[-1].startswith("0x")
+        ]
+
+        for round in chain_rounds:
+            round_id = round.split("/")[-1]
+            df_round = pd.read_json(f"{round}/{json_name}")
+            df_round["chainId"] = chain_id
+            df_round["roundId"] = round_id
+            df = pd.concat([df, df_round])
+
+    return df
+
+
 @asset
 def raw_passport_scores() -> pd.DataFrame:
     file_url = f"{ALLO_INDEXER_URL}/passport_scores.json"
@@ -42,3 +68,13 @@ def raw_prices() -> pd.DataFrame:
 @asset
 def raw_rounds() -> pd.DataFrame:
     return chain_file_aggregator("rounds.json")
+
+
+@asset
+def raw_round_votes() -> pd.DataFrame:
+    return round_file_aggregator("votes.json")
+
+
+@asset
+def raw_round_applications() -> pd.DataFrame:
+    return round_file_aggregator("applications.json")

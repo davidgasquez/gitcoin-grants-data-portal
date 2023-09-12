@@ -6,8 +6,9 @@ RUN curl -sL $(curl https://quarto.org/docs/download/_download.json | grep -oP "
     && rm /tmp/quarto.deb
 
 # Setup environment
-ENV DATA_DIR /workspaces/gitcoin-grants-data-portal/data
-ENV DBT_PROFILES_DIR "${DATA_DIR}/dbt"
+ENV PROJECT_DIR /workspaces/gitcoin-grants-data-portal
+ENV DATA_DIR "${PROJECT_DIR}/data"
+ENV DBT_PROFILES_DIR "${PROJECT_DIR}/dbt"
 ENV DATABASE_URL "duckdb:///${DATA_DIR}/dbt.duckdb"
 
 # Install Python Dependencie

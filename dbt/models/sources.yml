@@ -19,3 +19,11 @@ sources:
         meta:
           dagster:
             asset_key: ["raw_rounds"]
+      - name: raw_round_votes
+        meta:
+          dagster:
+            asset_key: ["raw_round_votes"]
+      - name: raw_round_applications
+        meta:
+          dagster:
+            asset_key: ["raw_round_applications"]
