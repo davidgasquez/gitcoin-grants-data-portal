@@ -1,5 +1,9 @@
 # 🌲 Gitcoin Grants Data Portal
 
+> **Note**
+>
+> This is the code side of the tinkering. You can find the blog post here: https://davidgasquez.github.io/gitcoin-data/
+
 Open source, serverless, and local-first data hub for Gitcoin Grants data!
 
 The repository contains code and artifacts to help process Gitcoin Grants data from the [Allo Indexer Data API](https://indexer-grants-stack.gitcoin.co/data/). It is an instance of [Datadex](https://github.com/davidgasquez/datadex) allowing you and everyone else to:
