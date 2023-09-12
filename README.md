@@ -2,7 +2,7 @@
 
 > **Note**
 >
-> This is the code side of the tinkering. You can find the blog post here: https://davidgasquez.github.io/gitcoin-data/
+> This is the code side of the tinkering. You can [find the blog post on my blog](https://davidgasquez.github.io/gitcoin-data/).
 
 Open source, serverless, and local-first data hub for Gitcoin Grants data!
 
