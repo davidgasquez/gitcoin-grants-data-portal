@@ -13,6 +13,14 @@ The repository contains code and artifacts to help process Gitcoin Grants data f
 
 The fastest way to start using Datadex is via [VSCode Remote Containers](https://code.visualstudio.com/docs/remote/containers). Once inside the develpment environment, you'll only need to run `make deps`.
 
-[![](https://github.com/codespaces/badge.svg)](https://codespaces.new/davidgasquez/datadex)
+[![badge](https://github.com/codespaces/badge.svg)](https://codespaces.new/davidgasquez/gitcoin-grants-data-portal)
 
 PS: The development environment can also run in your browser thanks to GitHub Codespaces!
+
+## 🛠️ Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. There are multiple interesting ways to contribute to this project:
+
+- Add [new data sources](ggdp/assets.py)
+- Improve [dbt project](dbt/) models
+- Write a one off [report](reports/)
