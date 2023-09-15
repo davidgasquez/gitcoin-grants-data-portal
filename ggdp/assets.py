@@ -36,7 +36,12 @@ def round_file_aggregator(json_name):
 
         for round in chain_rounds:
             round_id = round.split("/")[-1]
-            df_round = pd.read_json(f"{round}/{json_name}")
+            try:
+                df_round = pd.read_json(f"{round}/{json_name}")
+            except Exception as e:
+                print(f"Error reading {round}/{json_name}")
+                print(f"Error: {e}")
+                continue
             df_round["chainId"] = chain_id
             df_round["roundId"] = round_id
             df = pd.concat([df, df_round])
