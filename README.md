@@ -6,13 +6,11 @@
 
 [![CI](https://github.com/davidgasquez/gitcoin-grants-data-portal/actions/workflows/ci.yml/badge.svg)](https://github.com/davidgasquez/gitcoin-grants-data-portal/actions/workflows/ci.yml)
 
-Proof of Concept for a fully open source, serverless, and local-first data hub for Gitcoin Grants data
+Open source, serverless, and local-first data hub for Gitcoin Grants data to improve data access and empower data scientists to conduct research and guide community driven analysis and decisions.
 
 ![img](https://user-images.githubusercontent.com/1682202/268236925-d44915ab-d46b-49ff-85ec-2ad06bcfe5e0.png)
 
 > You can [find the accompanying post on my blog](https://davidgasquez.github.io/gitcoin-data/)!
-
-
 
 ## 📖 Overview
 
