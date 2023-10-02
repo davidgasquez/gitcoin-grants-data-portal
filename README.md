@@ -1,12 +1,18 @@
+<p align="center">
+<img src="https://user-images.githubusercontent.com/1682202/271937380-10d6e036-5fe4-4ea6-b3b4-8e3001c21289.png" data-canonical-src="https://user-images.githubusercontent.com/1682202/271937380-10d6e036-5fe4-4ea6-b3b4-8e3001c21289.png" width="100" />
+</p>
+
 # 🌲 Gitcoin Grants Data Portal
 
 [![CI](https://github.com/davidgasquez/gitcoin-grants-data-portal/actions/workflows/ci.yml/badge.svg)](https://github.com/davidgasquez/gitcoin-grants-data-portal/actions/workflows/ci.yml)
 
-Proof of Concept for a fully open source, serverless, and local-first data hub for Gitcoin Grants data!
+Proof of Concept for a fully open source, serverless, and local-first data hub for Gitcoin Grants data
 
 ![img](https://user-images.githubusercontent.com/1682202/268236925-d44915ab-d46b-49ff-85ec-2ad06bcfe5e0.png)
 
 > You can [find the accompanying post on my blog](https://davidgasquez.github.io/gitcoin-data/)!
+
+
 
 ## 📖 Overview
 
