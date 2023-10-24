@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python:3
+FROM mcr.microsoft.com/devcontainers/python:3.11
 
 # Install Quarto
 RUN curl -sL $(curl https://quarto.org/docs/download/_download.json | grep -oP "(?<=\"download_url\":\s\")https.*${ARCH}\.deb") --output /tmp/quarto.deb \

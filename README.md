@@ -14,7 +14,7 @@ Open source, serverless, and local-first data hub for Gitcoin Grants data to imp
 
 ## 📖 Overview
 
-The repository contains code and artifacts to help process Gitcoin Grants data from the [Allo Indexer Data API](https://indexer-grants-stack.gitcoin.co/data/). It is an instance of [Datadex](https://github.com/davidgasquez/datadex) allowing you and everyone else to:
+The repository contains code and artifacts to help process Gitcoin Grants data from the [Allo Indexer Data API](https://indexer-production.fly.dev/data/). It is an instance of [Datadex](https://github.com/davidgasquez/datadex) allowing you and everyone else to:
 
 - Add new data sources to the portal, collaborate on better models (ala Dune) or submit an interesting analysis.
 - All in a permissionless way. Don't ask, fork it and improve the models, add a new source or update any script.
