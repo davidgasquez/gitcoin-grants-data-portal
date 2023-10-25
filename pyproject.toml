@@ -5,7 +5,6 @@ dependencies = [
     "altair",
     "aiohttp",
     "dagster",
-    "dagster-webserver",
     "dagster-dbt",
     "dagster-duckdb",
     "dagster-duckdb-pandas",

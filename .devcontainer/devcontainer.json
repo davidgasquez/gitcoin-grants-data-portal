@@ -4,13 +4,11 @@
     "dockerfile": "../Dockerfile",
     "context": ".."
   },
-  "features": {
-    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:latest": {}
-  },
   "customizations": {
     "vscode": {
       "settings": {
         "quarto.render.previewType": "external",
+        "notebook.formatOnSave.enabled": true,
         "python.analysis.typeCheckingMode": "basic",
         "dbt.queryLimit": 200,
         "files.associations": {
@@ -20,19 +18,18 @@
           "editor.formatOnSave": false
         },
         "[python]": {
-          "editor.defaultFormatter": "ms-python.black-formatter",
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "editor.formatOnSave": true,
           "editor.codeActionsOnSave": {
-            "editor.formatOnSave": true,
             "source.fixAll": true,
-            "source.organizeImports": true,
-          },
-          "notebook.formatOnSave.enabled": true
+            "source.organizeImports": true
+          }
         }
       },
       "extensions": [
         "charliermarsh.ruff",
+        "EditorConfig.EditorConfig",
         "innoverio.vscode-dbt-power-user",
-        "ms-python.black-formatter",
         "ms-python.isort",
         "ms-python.python",
         "ms-python.vscode-pylance",
