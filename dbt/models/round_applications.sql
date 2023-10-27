@@ -4,8 +4,8 @@ with source as (
 
 renamed as (
     select
-        chainId as chain_id,
-        roundId as round_id,
+        lower(chainId) as chain_id,
+        lower(roundId) as round_id,
         id,
         projectId as project_id,
         status,

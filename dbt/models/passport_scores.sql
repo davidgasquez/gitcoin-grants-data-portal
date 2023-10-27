@@ -4,7 +4,7 @@ with source as (
 
 renamed as (
     select
-        address,
+        lower(address) as address,
         score,
         status,
         last_score_timestamp,

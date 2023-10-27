@@ -4,14 +4,14 @@ with source as (
 
 renamed as (
     select
-        chainId as chain_id,
-        roundId as round_id,
+        lower(chainId) as chain_id,
+        lower(roundId) as round_id,
         id,
         transaction,
         blockNumber as block_number,
         projectId as project_id,
         applicationId as application_id,
-        voter,
+        lower(voter) as voter,
         grantAddress as grant_address,
         token,
         amount,
