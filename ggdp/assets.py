@@ -56,6 +56,9 @@ def round_file_aggregator(json_name):
             df_round["chainId"] = str(chain_id)
             df_round["roundId"] = str(round_id)
             df = pd.concat([df, df_round])
+
+    df = df.convert_dtypes()
+
     return df
 
 
@@ -98,4 +101,6 @@ def raw_round_applications() -> pd.DataFrame:
 
 @asset
 def raw_round_contributors() -> pd.DataFrame:
-    return round_file_aggregator("contributors.json")
+    df = round_file_aggregator("contributors.json")
+    df["roundId"] = '"' + df["roundId"] + '"'
+    return df

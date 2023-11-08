@@ -9,6 +9,7 @@
       "settings": {
         "quarto.render.previewType": "external",
         "notebook.formatOnSave.enabled": true,
+        "python.analysis.autoImportCompletions": true,
         "python.analysis.typeCheckingMode": "basic",
         "dbt.queryLimit": 200,
         "files.associations": {
