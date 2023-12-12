@@ -102,7 +102,7 @@ def raw_round_votes() -> pd.DataFrame:
 
 @asset
 def raw_round_applications() -> pd.DataFrame:
-    applications = chain_file_aggregator("applications.json")
+    applications = round_file_aggregator("applications.json")
     applications['metadata'] = applications['metadata'].apply(json.dumps)
     return applications
 
