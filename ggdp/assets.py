@@ -35,12 +35,14 @@ def round_file_aggregator(json_name):
 
     for path in paths:
         chain_id = int(path.split("/")[-1])
+
         try:
             chain_rounds = fs.ls(f"{path}/rounds/")
         except Exception as e:
             print(f"Error reading {path}/rounds/")
             print(f"Error: {e}")
             continue
+
         chain_rounds = [
             round["name"]
             for round in chain_rounds
@@ -79,7 +81,7 @@ def raw_passport_scores() -> pd.DataFrame:
 @asset
 def raw_projects() -> pd.DataFrame:
     projects = chain_file_aggregator("projects.json")
-    projects['metadata'] = projects['metadata'].apply(json.dumps)
+    projects["metadata"] = projects["metadata"].apply(json.dumps)
     return projects
 
 
@@ -91,7 +93,7 @@ def raw_prices() -> pd.DataFrame:
 @asset
 def raw_rounds() -> pd.DataFrame:
     rounds = chain_file_aggregator("rounds.json")
-    rounds['metadata'] = rounds['metadata'].apply(json.dumps)
+    rounds["metadata"] = rounds["metadata"].apply(json.dumps)
     return rounds
 
 
@@ -102,8 +104,8 @@ def raw_round_votes() -> pd.DataFrame:
 
 @asset
 def raw_round_applications() -> pd.DataFrame:
-    applications = chain_file_aggregator("applications.json")
-    applications['metadata'] = applications['metadata'].apply(json.dumps)
+    applications = round_file_aggregator("applications.json")
+    applications["metadata"] = applications["metadata"].apply(json.dumps)
     return applications
 
 

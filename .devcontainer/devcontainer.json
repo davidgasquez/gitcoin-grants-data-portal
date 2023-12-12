@@ -8,23 +8,26 @@
     "vscode": {
       "settings": {
         "quarto.render.previewType": "external",
-        "notebook.formatOnSave.enabled": true,
-        "python.analysis.autoImportCompletions": true,
-        "python.analysis.typeCheckingMode": "basic",
-        "dbt.queryLimit": 200,
         "files.associations": {
           "*.sql": "jinja-sql"
         },
+        "python.analysis.autoImportCompletions": true,
+        "python.analysis.typeCheckingMode": "basic",
         "[jinja-sql]": {
           "editor.formatOnSave": false
         },
         "[python]": {
-          "editor.defaultFormatter": "charliermarsh.ruff",
           "editor.formatOnSave": true,
           "editor.codeActionsOnSave": {
             "source.fixAll": true,
             "source.organizeImports": true
-          }
+          },
+          "editor.defaultFormatter": "charliermarsh.ruff"
+        },
+        "notebook.formatOnSave.enabled": true,
+        "notebook.codeActionsOnSave": {
+          "source.fixAll": true,
+          "source.organizeImports": true
         }
       },
       "extensions": [
@@ -42,5 +45,6 @@
         "VisualStudioExptTeam.vscodeintellicode"
       ]
     }
-  }
+  },
+  "postCreateCommand": "pip install -e '.[dev]'"
 }

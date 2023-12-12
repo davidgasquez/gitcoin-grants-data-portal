@@ -6,11 +6,11 @@
 
 [![CI](https://github.com/davidgasquez/gitcoin-grants-data-portal/actions/workflows/ci.yml/badge.svg)](https://github.com/davidgasquez/gitcoin-grants-data-portal/actions/workflows/ci.yml)
 
-Open source, serverless, and local-first data hub for Gitcoin Grants data to improve data access and empower data scientists to conduct research and guide community driven analysis and decisions.
+Your open source, serverless, and local-first Data Platform for Gitcoin Grants Data. With this data hub, we aim to improve data access and empower data scientists to conduct research and guide community driven analysis and decisions!
 
 ![img](https://user-images.githubusercontent.com/1682202/268236925-d44915ab-d46b-49ff-85ec-2ad06bcfe5e0.png)
 
-> You can [find the accompanying post on my blog](https://davidgasquez.github.io/gitcoin-data/)!
+> You can read more on the [motivation and the approach on my blog](https://davidgasquez.github.io/gitcoin-data/)!
 
 ## 📖 Overview
 
@@ -18,8 +18,7 @@ The repository contains code and artifacts to help process Gitcoin Grants data f
 
 - Add new data sources to the portal, collaborate on better models (ala Dune) or submit an interesting analysis.
 - All in a permissionless way. Don't ask, fork it and improve the models, add a new source or update any script.
-- Declarative stateless transformations tracked in git, executed in GitHub Actions an
-d published to IPFS. Data, artifacts (like the entire DuckDB database), and models all version controlled.
+- Declarative stateless transformations tracked in git, executed in GitHub Actions and published to IPFS. Data, artifacts (like the entire DuckDB database), and models all version controlled.
 - Share and explore dashboards and report with the world!
 
 ### 📦 Key Features

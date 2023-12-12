@@ -18,7 +18,7 @@ all_assets = load_assets_from_modules([assets])
 resources = {
     "dbt": dbt_resource,
     "io_manager": DuckDBPandasIOManager(
-        database="data/dbt.duckdb",
+        database="data/local.duckdb",
     ),
 }
 
