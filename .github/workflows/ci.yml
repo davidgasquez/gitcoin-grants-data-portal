@@ -30,6 +30,11 @@ jobs:
       run: |
         make run
 
+    - name: Run
+      run: |
+        python -c 'from ggdp import db; db.export_database_to_parquet("data/local.duckdb", "tables");'
+        ls -lh tables
+
     # - name: Setup Quarto
     #   uses: quarto-dev/quarto-actions/setup@v2
 

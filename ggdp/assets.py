@@ -1,8 +1,10 @@
 import json
 
 import pandas as pd
+import requests
 from dagster import asset
 from fsspec.implementations.http import HTTPFileSystem
+from retry import retry
 
 ALLO_INDEXER_URL = "https://indexer-production.fly.dev/data"
 
@@ -24,6 +26,14 @@ def chain_file_aggregator(json_name):
             continue
         df = pd.concat([df, df_chain])
     return df
+
+
+@retry(tries=8, delay=2, backoff=2, max_delay=10)
+def read_json_with_retry(json_path):
+    print(f"Reading {json_path}")
+    response = requests.get(json_path, timeout=10)
+    response.raise_for_status()
+    return pd.read_json(response.text)
 
 
 def round_file_aggregator(json_name):
@@ -52,7 +62,7 @@ def round_file_aggregator(json_name):
         for round in chain_rounds:
             round_id = round.split("/")[-1]
             try:
-                df_round = pd.read_json(f"{round}/{json_name}")
+                df_round = read_json_with_retry(f"{round}/{json_name}")
             except Exception as e:
                 print(f"Error reading {round}/{json_name}")
                 print(f"Error: {e}")

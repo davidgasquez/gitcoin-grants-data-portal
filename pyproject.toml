@@ -23,6 +23,7 @@ dependencies = [
     "pandas",
     "pyarrow",
     "regex",
+    "retry",
     "tqdm",
 ]
 
