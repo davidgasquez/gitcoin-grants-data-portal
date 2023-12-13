@@ -8,9 +8,10 @@
 
 Your open source, serverless, and local-first Data Platform for Gitcoin Grants Data. With this data hub, we aim to improve data access and empower data scientists to conduct research and guide community driven analysis and decisions!
 
-![img](https://user-images.githubusercontent.com/1682202/268236925-d44915ab-d46b-49ff-85ec-2ad06bcfe5e0.png)
+> [!note]
+Access the [latest Gitcoin Grants Data tables here](https://ipfs.filebase.io/ipfs/QmQZBEviWbWeFzP8V2Aq4hQSPsfu5BEQDB8MfPk9PQ17CF/)!
 
-> You can read more on the [motivation and the approach on my blog](https://davidgasquez.github.io/gitcoin-data/)!
+![img](https://user-images.githubusercontent.com/1682202/268236925-d44915ab-d46b-49ff-85ec-2ad06bcfe5e0.png)
 
 ## 📖 Overview
 
@@ -20,6 +21,9 @@ The repository contains code and artifacts to help process Gitcoin Grants data f
 - All in a permissionless way. Don't ask, fork it and improve the models, add a new source or update any script.
 - Declarative stateless transformations tracked in git, executed in GitHub Actions and published to IPFS. Data, artifacts (like the entire DuckDB database), and models all version controlled.
 - Share and explore dashboards and report with the world!
+
+> [!TIP]
+> You can read more on the [motivation and the approach on my blog](https://davidgasquez.github.io/gitcoin-data/)!
 
 ### 📦 Key Features
 
