@@ -30,10 +30,19 @@ jobs:
       run: |
         make run
 
-    - name: Run
+    - name: Export Database
       run: |
         python -c 'from ggdp import db; db.export_database_to_parquet("data/local.duckdb", "tables");'
         ls -lh tables
+
+    - uses: aquiladev/ipfs-action@v1
+      with:
+        path: ./tables
+        service: filebase
+        pinName: gitcoin-grants-data-portal-tables
+        filebaseBucket: gitcoin-grants-data-portal
+        filebaseKey: ${{ secrets.FILEBASE_KEY }}
+        filebaseSecret: ${{ secrets.FILEBASE_SECRET }}
 
     # - name: Setup Quarto
     #   uses: quarto-dev/quarto-actions/setup@v2

@@ -3,7 +3,7 @@ import os
 import duckdb
 import pandas as pd
 
-DATA_DIR = os.path.dirname(os.path.abspath(__file__)) + "../data"
+DATA_DIR = os.path.dirname(os.path.abspath(__file__)) + "/../data"
 
 
 def query(sql) -> pd.DataFrame:
