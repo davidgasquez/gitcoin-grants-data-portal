@@ -162,3 +162,4 @@ cython_debug/
 # All under data except gitkeep
 data/*
 !data/.gitkeep
+!data/IPFS_CID
