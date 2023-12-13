@@ -45,6 +45,13 @@ jobs:
         filebaseKey: ${{ secrets.FILEBASE_KEY }}
         filebaseSecret: ${{ secrets.FILEBASE_SECRET }}
 
-    - run: echo ${{ steps.ipfs.outputs.cid }}
-    - run: echo ${{ steps.ipfs.outputs.ipfs }}
-    - run: echo ${{ steps.ipfs.outputs.hash }}
+    - name: Create CID file
+      run: echo ${{ steps.ipfs.outputs.cid }} > data/IPFS_CID
+
+    - name: Commit and Push
+      run: |
+        git config --global user.name "CI"
+        git config --global user.email "
+        git add data/IPFS_CID
+        git commit -m "Update IPFS CID"
+        git push

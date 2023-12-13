@@ -4,12 +4,6 @@ default:
       type: duckdb
       path: "../data/local.duckdb"
       threads: 8
-      extensions:
-        - httpfs
-        - parquet
-      settings:
-        enable_object_cache: true
-        enable_http_metadata_cache: true
       external_root: "../data"
   target: dev
 
