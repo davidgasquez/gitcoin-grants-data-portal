@@ -30,7 +30,6 @@ def chain_file_aggregator(json_name):
 
 @retry(tries=8, delay=2, backoff=2, max_delay=10)
 def read_json_with_retry(json_path):
-    print(f"Reading {json_path}")
     response = requests.get(json_path, timeout=10)
     response.raise_for_status()
     return pd.read_json(response.text)
