@@ -1,8 +1,10 @@
 import json
 
 import pandas as pd
+import requests
 from dagster import asset
 from fsspec.implementations.http import HTTPFileSystem
+from retry import retry
 
 ALLO_INDEXER_URL = "https://indexer-production.fly.dev/data"
 
@@ -26,6 +28,13 @@ def chain_file_aggregator(json_name):
     return df
 
 
+@retry(tries=8, delay=2, backoff=2, max_delay=10)
+def read_json_with_retry(json_path):
+    response = requests.get(json_path, timeout=10)
+    response.raise_for_status()
+    return pd.read_json(response.text)
+
+
 def round_file_aggregator(json_name):
     fs = HTTPFileSystem(simple_links=True)
     paths = fs.ls(ALLO_INDEXER_URL)
@@ -35,12 +44,14 @@ def round_file_aggregator(json_name):
 
     for path in paths:
         chain_id = int(path.split("/")[-1])
+
         try:
             chain_rounds = fs.ls(f"{path}/rounds/")
         except Exception as e:
             print(f"Error reading {path}/rounds/")
             print(f"Error: {e}")
             continue
+
         chain_rounds = [
             round["name"]
             for round in chain_rounds
@@ -50,7 +61,7 @@ def round_file_aggregator(json_name):
         for round in chain_rounds:
             round_id = round.split("/")[-1]
             try:
-                df_round = pd.read_json(f"{round}/{json_name}")
+                df_round = read_json_with_retry(f"{round}/{json_name}")
             except Exception as e:
                 print(f"Error reading {round}/{json_name}")
                 print(f"Error: {e}")
@@ -79,7 +90,7 @@ def raw_passport_scores() -> pd.DataFrame:
 @asset
 def raw_projects() -> pd.DataFrame:
     projects = chain_file_aggregator("projects.json")
-    projects['metadata'] = projects['metadata'].apply(json.dumps)
+    projects["metadata"] = projects["metadata"].apply(json.dumps)
     return projects
 
 
@@ -91,7 +102,7 @@ def raw_prices() -> pd.DataFrame:
 @asset
 def raw_rounds() -> pd.DataFrame:
     rounds = chain_file_aggregator("rounds.json")
-    rounds['metadata'] = rounds['metadata'].apply(json.dumps)
+    rounds["metadata"] = rounds["metadata"].apply(json.dumps)
     return rounds
 
 
@@ -103,7 +114,7 @@ def raw_round_votes() -> pd.DataFrame:
 @asset
 def raw_round_applications() -> pd.DataFrame:
     applications = round_file_aggregator("applications.json")
-    applications['metadata'] = applications['metadata'].apply(json.dumps)
+    applications["metadata"] = applications["metadata"].apply(json.dumps)
     return applications
 
 

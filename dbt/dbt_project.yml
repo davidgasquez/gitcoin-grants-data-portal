@@ -11,4 +11,4 @@ clean-targets:
 
 models:
   ggdp:
-    +materialized: external
+    +materialized: table

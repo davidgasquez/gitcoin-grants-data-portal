@@ -1,6 +1,7 @@
 [project]
 name = "ggdp"
 version = "1.0.0"
+authors = [{ name = "David Gasquez" }]
 dependencies = [
     "altair",
     "aiohttp",
@@ -22,6 +23,7 @@ dependencies = [
     "pandas",
     "pyarrow",
     "regex",
+    "retry",
     "tqdm",
 ]
 
@@ -29,8 +31,14 @@ requires-python = ">=3.10, <3.12"
 readme = "README.md"
 license = { text = "MIT" }
 
+[project.urls]
+Homepage = "https://davidgasquez.github.io/gitcoin-grants-data-portal/"
+Changelog = "https://github.com/davidgasquez/gitcoin-grants-data-portal/commits/main/"
+Issues = "https://github.com/davidgasquez/gitcoin-grants-data-portal/issues"
+CI = "https://github.com/davidgasquez/gitcoin-grants-data-portal/actions"
+
 [project.optional-dependencies]
-dev = ["dagit", "shandy-sqlfmt[jinjafmt]"]
+dev = ["dagit", "shandy-sqlfmt[jinjafmt]", "ruff"]
 
 [build-system]
 requires = ["setuptools"]
@@ -39,8 +47,8 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools]
 packages = ["ggdp"]
 
-[tool.dagster]
-module_name = "ggdp"
+[tool.setuptools.package-data]
+"datadex" = ["../dbt/**"]
 
 [tool.sqlfmt]
 line_length = 120

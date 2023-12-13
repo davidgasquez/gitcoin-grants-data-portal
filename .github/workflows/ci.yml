@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 10 * * 1'
+    - cron: "0 10 * * 1"
   workflow_dispatch:
 
 jobs:
@@ -14,51 +14,37 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
-    - name: Build Docker
-      run: docker build -t davidgasquez/ggdp:latest .
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.11
+        cache: pip
 
-    - name: Run Make
-      run: docker run --rm -v $PWD/:/workspaces/gitcoin-grants-data-portal/ davidgasquez/ggdp:latest make run
-
-    - name: Publish Web
-      run: docker run --rm -v $PWD/:/workspaces/gitcoin-grants-data-portal/ davidgasquez/ggdp:latest sh -c 'quarto render reports/sandbox.ipynb -o index.html && mv index.html reports/sandbox_files/ data/'
-
-    - name: "Set current date as env variable"
-      id: version
+    - name: Install dependencies
       run: |
-        echo "tag_name=$(date +'%Y-%m-%d-%H-%M')" >> $GITHUB_OUTPUT
+        pip install -e .
 
-    - name: Create Release
-      id: create-release
-      uses: shogo82148/actions-create-release@v1
+    - name: Run
+      run: |
+        make run
+
+    - name: Export Database
+      run: |
+        python -c 'from ggdp import db; db.export_database_to_parquet("data/local.duckdb", "tables");'
+        ls -lh tables
+
+    - uses: aquiladev/ipfs-action@master
+      id: ipfs
       with:
-        draft: true
-        release_name: ${{ steps.version.outputs.tag_name }}
-        tag_name: ${{ steps.version.outputs.tag_name }}
-        commitish: ${{ github.sha }}
+        path: ./tables
+        service: filebase
+        pinName: gitcoin-grants-data-portal-tables
+        filebaseBucket: gitcoin-grants-data-portal
+        filebaseKey: ${{ secrets.FILEBASE_KEY }}
+        filebaseSecret: ${{ secrets.FILEBASE_SECRET }}
 
-    - name: Upload Assets
-      uses: shogo82148/actions-upload-release-asset@v1
-      with:
-        upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: ${{ github.workspace }}/data/dbt.duckdb
-        asset_name: dbt.duckdb
-
-    - name: Upload to IPFS
-      uses: web3-storage/add-to-web3@v2
-      id: web3
-      with:
-        web3_token: ${{ secrets.WEB3_STORAGE_TOKEN }}
-        path_to_add: 'data'
-
-    - run: echo ${{ steps.web3.outputs.cid }}
-    - run: echo ${{ steps.web3.outputs.url }}
-
-    - name: Publish release
-      uses: StuYarrow/publish-release@v1.1.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        id: ${{ steps.create-release.outputs.id }}
+    - run: echo ${{ steps.ipfs.outputs.cid }}
+    - run: echo ${{ steps.ipfs.outputs.ipfs }}
+    - run: echo ${{ steps.ipfs.outputs.hash }}
