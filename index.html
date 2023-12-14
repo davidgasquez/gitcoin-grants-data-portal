@@ -120,8 +120,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="gitcoin-grants-data">Gitcoin Grants Data</h2>
 <p>To get the latest Gitcoin Grants data, you can run the following cells.</p>
 <div id="cell-4" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>LATEST_IPFS_CID <span class="op">=</span> requests.get(</span>
@@ -129,13 +127,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>).text.strip()</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>GATEWAY_URL <span class="op">=</span> <span class="ss">f"https://ipfs.filebase.io/ipfs/</span><span class="sc">{</span>LATEST_IPFS_CID<span class="sc">}</span><span class="ss">/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>Once you have the latest URL, you can remotely access the data from your favorite data science tools like pandas, polars, DuckDB.</p>
 <p>For example, let’s see the number of votes per round.</p>
 <div id="cell-6" class="cell" data-execution_count="7">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> duckdb</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>duckdb.sql(</span>
@@ -149,7 +144,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ss">    limit 10;</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ss">    """</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id":"3a4c3206cb0b4c65947a4136f3b1b49c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
@@ -179,12 +173,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="passport-scores" class="level4">
 <h4 class="anchored" data-anchor-id="passport-scores">Passport Scores</h4>
 <div id="cell-9" class="cell" data-execution_count="8">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ggdp.db <span class="im">import</span> query</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>query(<span class="st">"from passport_scores order by last_score_timestamp desc limit 10"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
@@ -324,10 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="prices" class="level3">
 <h3 class="anchored" data-anchor-id="prices">Prices</h3>
 <div id="cell-11" class="cell" data-execution_count="9">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>query(<span class="st">"from public.raw_prices order by timestamp desc limit 10"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
@@ -445,10 +433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="projects" class="level3">
 <h3 class="anchored" data-anchor-id="projects">Projects</h3>
 <div id="cell-13" class="cell" data-execution_count="13">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>query(<span class="st">"from public.raw_projects order by createdAtBlock desc limit 5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
@@ -527,10 +512,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="rounds" class="level3">
 <h3 class="anchored" data-anchor-id="rounds">Rounds</h3>
 <div id="cell-15" class="cell" data-execution_count="14">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>query(<span class="st">"from rounds order by created_at_block desc limit 10"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 
@@ -780,10 +762,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="votes" class="level3">
 <h3 class="anchored" data-anchor-id="votes">Votes</h3>
 <div id="cell-17" class="cell" data-execution_count="15">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>query(<span class="st">"from round_votes order by amount_usd desc limit 10"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 
@@ -979,9 +958,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sample-queries" class="level2">
 <h2 class="anchored" data-anchor-id="sample-queries">Sample Queries</h2>
 <p>Top contributors for chain 1!</p>
-<div id="cell-20" class="cell" data-execution_count="16">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="cell-20" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>query(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"""</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="st">    select</span></span>
@@ -994,8 +971,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="st">    limit 10</span></span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 
 
