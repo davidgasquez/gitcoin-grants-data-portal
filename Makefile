@@ -13,7 +13,7 @@ render:
 	@quarto render
 
 publish:
-	@quarto publish gh-pages --no-prompt
+	@quarto publish gh-pages notebooks/sandbox.ipynb --no-prompt
 
 clean:
 	@rm -rf portal/.quarto data/*.parquet data/*.duckdb

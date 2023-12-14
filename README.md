@@ -13,6 +13,20 @@ Access the [latest Gitcoin Grants Data tables here](https://ipfs.filebase.io/ipf
 
 ![img](https://user-images.githubusercontent.com/1682202/268236925-d44915ab-d46b-49ff-85ec-2ad06bcfe5e0.png)
 
+## 📂 Gitcoin Grants Data
+
+You can get the latest data a Parquet files from IPFS. The data lives under the [IPFS CID](https://raw.githubusercontent.com/davidgasquez/gitcoin-grants-data-portal/main/data/IPFS_CID) pointer available in this repository.
+
+The following command will give you a working URL to explore the available tables.
+
+```bash
+# Get the latest IPFS CID
+LATEST_IPFS_CID=$(curl https://raw.githubusercontent.com/davidgasquez/gitcoin-grants-data-portal/main/data/IPFS_CID)
+
+# Download round_votes.parquet from a public IPFS gateway
+echo https://ipfs.filebase.io/ipfs/$LATEST_IPFS_CID/
+```
+
 ## 📖 Overview
 
 The repository contains code and artifacts to help process Gitcoin Grants data from the [Allo Indexer Data API](https://indexer-production.fly.dev/data/). It is an instance of [Datadex](https://github.com/davidgasquez/datadex) allowing you and everyone else to:
