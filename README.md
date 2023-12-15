@@ -23,7 +23,7 @@ The following command will give you a working URL to explore the available table
 # Get the latest IPFS CID
 LATEST_IPFS_CID=$(curl https://raw.githubusercontent.com/davidgasquez/gitcoin-grants-data-portal/main/data/IPFS_CID)
 
-# Download round_votes.parquet from a public IPFS gateway
+# Print the Gateway URL with all the tables
 echo https://ipfs.filebase.io/ipfs/$LATEST_IPFS_CID/
 ```
 
