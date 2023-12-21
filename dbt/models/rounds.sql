@@ -23,6 +23,16 @@ renamed as (
         updatedAtBlock as updated_at_block,
         chainId as chain_id
     from source
+),
+
+extracted_metadata as (
+    select
+        *,
+        json_extract_path_text(metadata, 'name') as name,
+        json_extract_path_text(metadata, 'roundType') as round_type,
+        json_extract_path_text(metadata, 'programContractAddress') as program_address,
+        json_extract_path_text(metadata, '$.quadraticFundingConfig.sybilDefense')::boolean as sybil_defense        
+    from renamed
 )
 
-select * from renamed
+select * from extracted_metadata
