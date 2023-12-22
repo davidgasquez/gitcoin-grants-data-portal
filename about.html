@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Gitcoin Grants Data Portal - 🌲 Gitcoin Grants Data Portal</title>
+<title>Gitcoin Grants Data Portal - 📖 About</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -100,8 +66,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
-<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
 </head>
@@ -124,11 +88,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link active" href="./about.html" aria-current="page"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
@@ -152,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">🌲 Gitcoin Grants Data Portal</h1>
+<h1 class="title">📖 About</h1>
 </div>
 
 
@@ -169,140 +133,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Welcome to the Gitcoin Grants Data Portal. Your open source, serverless, and local-first Data Platform for Gitcoin Grants Data. With this data hub, we aim to improve data access and empower data scientists to conduct research and guide community driven analysis and decisions!</p>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="10" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 9;"><span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>cid <span class="op">=</span> <span class="fu">fetch</span>(<span class="st">"https://raw.githubusercontent.com/davidgasquez/gitcoin-grants-data-portal/main/data/IPFS_CID"</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">then</span>((response) <span class="kw">=&gt;</span> response<span class="op">.</span><span class="fu">text</span>())<span class="op">.</span><span class="fu">then</span>((text) <span class="kw">=&gt;</span> text<span class="op">.</span><span class="fu">trim</span>())</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>gateway_url <span class="op">=</span> <span class="st">"https://ipfs.filebase.io/ipfs/"</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> gateway_url <span class="op">+</span> cid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-1" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-2" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-3" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-</div>
-<p>You’ll find the datasets in the following IPFS CID.</p>
-<p><code><span><span id="ojs-element-id-1"></span></span></code></p>
-<p>Access it through <a href="https://ipfs.github.io/public-gateway-checker/">your favorite IPFS gateways</a>!</p>
-<section id="quick-data-stats" class="level3">
-<h3 class="anchored" data-anchor-id="quick-data-stats">📊 Quick Data Stats</h3>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="25" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 24;"><span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>ggdp <span class="op">=</span> DuckDBClient<span class="op">.</span><span class="fu">of</span>()</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>number_of_rounds <span class="op">=</span> ggdp<span class="op">.</span><span class="fu">query</span>(<span class="vs">`</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="vs">    select</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="vs">        count(id) as c</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="vs">    from parquet_scan('</span><span class="sc">${</span>url<span class="sc">}</span><span class="vs">/rounds.parquet')</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span>)</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>round_votes <span class="op">=</span> ggdp<span class="op">.</span><span class="fu">query</span>(<span class="vs">`</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="vs">    select</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="vs">        count(id) as c</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="vs">    from parquet_scan('</span><span class="sc">${</span>url<span class="sc">}</span><span class="vs">/round_votes.parquet')</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span>)</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>projects <span class="op">=</span> ggdp<span class="op">.</span><span class="fu">query</span>(<span class="vs">`</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="vs">    select</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="vs">        count(1) as c</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="vs">    from parquet_scan('</span><span class="sc">${</span>url<span class="sc">}</span><span class="vs">/projects.parquet')</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span>)</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>round_votes_scalar <span class="op">=</span> round_votes[<span class="dv">0</span>][<span class="st">"c"</span>]</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>number_of_rounds_scalar <span class="op">=</span> number_of_rounds[<span class="dv">0</span>][<span class="st">"c"</span>]</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>projects_scalar <span class="op">=</span> projects[<span class="dv">0</span>][<span class="st">"c"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-1" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-2" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-3" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-4" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-5" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-6" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-7" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-</div>
+<p>The project covers the code and artifacts to help process Gitcoin Grants data from the <a href="https://indexer-production.fly.dev/data/">Allo Indexer Data API</a>. It is an instance of <a href="https://github.com/davidgasquez/datadex">Datadex</a> allowing you and everyone else to:</p>
 <ul>
-<li>Rounds of Gitcoin Grants: <code><span><span id="ojs-element-id-2"></span></span></code></li>
-<li>Round votes: <code><span><span id="ojs-element-id-3"></span></span></code></li>
-<li>Projects: <code><span><span id="ojs-element-id-4"></span></span></code></li>
+<li>Add new data sources to the portal, collaborate on better models (ala Dune) or submit an interesting analysis.</li>
+<li>All in a permissionless way. Don’t ask, fork it and improve the models, add a new source or update any script.</li>
+<li>Declarative stateless transformations tracked in git, executed in GitHub Actions and published to IPFS. Data, artifacts (like the entire DuckDB database), and models all version controlled.</li>
+<li>Share and explore dashboards and report with the world!</li>
 </ul>
-<p><em>This data is queried live from your browser using <a href="https://duckdb.org/docs/api/wasm/overview.html">DuckDB WASM</a>.</em></p>
+<p>Read more about the <a href="https://davidgasquez.github.io/gitcoin-data/">motivation and initial approach on my blog</a>!</p>
+<section id="key-features" class="level2">
+<h2 class="anchored" data-anchor-id="key-features">📦 Key Features</h2>
+<ul>
+<li><strong>Open</strong>.
+<ul>
+<li>Both code and data are fully open source.</li>
+<li>Also relies on open standards/formats (Arrow ecosystem).</li>
+</ul></li>
+<li><strong>Permissionless</strong>.
+<ul>
+<li>Clone and edit things away! You’re not blocked by any API rate limits, or closed data like in Dune.</li>
+<li>All other git features like branching, merging, pull requests, … are available because all the data is transformed declaratively as code.</li>
+</ul></li>
+<li><strong>Decentralized</strong>.
+<ul>
+<li>The project runs on a laptop, a server, a CI runner (that’s the way is working right now) or a even decentralized compute network like <a href="https://www.bacalhau.org/">Bacalhau</a>. Oh, it even works in GitHub Codespaces so you don’t even need to setup anything locally!</li>
+<li>Data is stored in IPFS. You can run it locally, and it’ll generate the same IPFS files if nothing has changed. The more people runst it, the more distributed the IPFS files will be!</li>
+<li>Data comes from multiple sources and can be exposed in multiple ways.</li>
+</ul></li>
+<li><strong>Data as Code</strong>.
+<ul>
+<li>Every commit generates all the table files and pushes them to IPFS. This means that we can always go back in time and see the data as it was at that point in time. For every commit, we’ll have the data as it was at that point in time.</li>
+</ul></li>
+<li><strong>Modular</strong>.
+<ul>
+<li>Each component can be replaced, extended, or removed. Works well in many environments (your laptop, in a cluster, or from the browser), and with multiple tools (tables are files at the end of the day).</li>
+</ul></li>
+<li><strong>Low Friction</strong>.
+<ul>
+<li>Data (raw and processed) is already there! No need to write your own scripts. You can always reproduce it but getting started is as easy as pasting <a href="https://shell.duckdb.org/">a SQL query in your browser</a> or doing <code>pd.read_parquet(url)</code> in a Notebook.</li>
+<li>Every commit will also publish a set of Quarto Notebooks with the data. Could be used to generate reports/dahsboards, or as documentation.</li>
+</ul></li>
+<li><strong>Modern</strong>
+<ul>
+<li>It supports all the cool things data engineers want; typing, tests, materialized views, dev branches, …</li>
+<li>Uses best practices (declarative transformations) and state of the art tooling (DuckDB).</li>
+</ul></li>
+</ul>
 
 
-<div class="ojs-auto-generated hidden">
-<script type="ojs-module-contents">
-eyJjb250ZW50cyI6WyAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7Y2lkfTwvc3Bhbj5gIiwgImNlbGxOYW1lIjoib2pzLWVsZW1lbnQtaWQtMSJ9LCAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7bnVtYmVyX29mX3JvdW5kc19zY2FsYXJ9PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC0yIn0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHtyb3VuZF92b3Rlc19zY2FsYXJ9PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC0zIn0sICB7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJpbmxpbmUiOiJ0cnVlIiwic291cmNlIjoiaHRsLmh0bWxgPHNwYW4+JHtwcm9qZWN0c19zY2FsYXJ9PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC00In1dfQ==
-</script>
-</div>
 </section>
 
 </main> <!-- /main -->
-<script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImNpZCA9IGZldGNoKFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RhdmlkZ2FzcXVlei9naXRjb2luLWdyYW50cy1kYXRhLXBvcnRhbC9tYWluL2RhdGEvSVBGU19DSURcIilcbiAgLnRoZW4oKHJlc3BvbnNlKSA9PiByZXNwb25zZS50ZXh0KCkpLnRoZW4oKHRleHQpID0+IHRleHQudHJpbSgpKVxuZ2F0ZXdheV91cmwgPSBcImh0dHBzOi8vaXBmcy5maWxlYmFzZS5pby9pcGZzL1wiXG51cmwgPSBnYXRld2F5X3VybCArIGNpZFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZ2dkcCA9IER1Y2tEQkNsaWVudC5vZigpXG5cbm51bWJlcl9vZl9yb3VuZHMgPSBnZ2RwLnF1ZXJ5KGBcbiAgICBzZWxlY3RcbiAgICAgICAgY291bnQoaWQpIGFzIGNcbiAgICBmcm9tIHBhcnF1ZXRfc2NhbignJHt1cmx9L3JvdW5kcy5wYXJxdWV0JylcbmApXG5cbnJvdW5kX3ZvdGVzID0gZ2dkcC5xdWVyeShgXG4gICAgc2VsZWN0XG4gICAgICAgIGNvdW50KGlkKSBhcyBjXG4gICAgZnJvbSBwYXJxdWV0X3NjYW4oJyR7dXJsfS9yb3VuZF92b3Rlcy5wYXJxdWV0JylcbmApXG5cbnByb2plY3RzID0gZ2dkcC5xdWVyeShgXG4gICAgc2VsZWN0XG4gICAgICAgIGNvdW50KDEpIGFzIGNcbiAgICBmcm9tIHBhcnF1ZXRfc2NhbignJHt1cmx9L3Byb2plY3RzLnBhcnF1ZXQnKVxuYClcblxucm91bmRfdm90ZXNfc2NhbGFyID0gcm91bmRfdm90ZXNbMF1bXCJjXCJdXG5udW1iZXJfb2Zfcm91bmRzX3NjYWxhciA9IG51bWJlcl9vZl9yb3VuZHNbMF1bXCJjXCJdXG5wcm9qZWN0c19zY2FsYXIgPSBwcm9qZWN0c1swXVtcImNcIl1cbiJ9XX0=
-</script>
-<script type="module">
-if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-window._ojs.paths.runtimeToDoc = "../..";
-window._ojs.paths.runtimeToRoot = "../..";
-window._ojs.paths.docToRoot = "";
-window._ojs.selfContained = false;
-window._ojs.runtime.interpretFromScriptTags();
-</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
