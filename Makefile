@@ -7,13 +7,13 @@ dev:
 	@dagster dev -m ggdp
 
 preview:
-	@quarto preview
+	@quarto preview portal
 
 render:
-	@quarto render
+	@quarto render portal
 
 publish:
-	@quarto publish gh-pages notebooks/sandbox.ipynb --no-prompt
+	@quarto publish gh-pages portal --no-prompt
 
 clean:
 	@rm -rf portal/.quarto data/*.parquet data/*.duckdb

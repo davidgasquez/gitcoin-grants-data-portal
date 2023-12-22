@@ -8,9 +8,6 @@
 
 Your open source, serverless, and local-first Data Platform for Gitcoin Grants Data. With this data hub, we aim to improve data access and empower data scientists to conduct research and guide community driven analysis and decisions!
 
-> [!note]
-Access the [latest Gitcoin Grants Data tables here](https://ipfs.filebase.io/ipfs/QmQZBEviWbWeFzP8V2Aq4hQSPsfu5BEQDB8MfPk9PQ17CF/)!
-
 ![img](https://user-images.githubusercontent.com/1682202/268236925-d44915ab-d46b-49ff-85ec-2ad06bcfe5e0.png)
 
 ## 📂 Gitcoin Grants Data
