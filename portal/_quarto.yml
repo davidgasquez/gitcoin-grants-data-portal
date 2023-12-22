@@ -9,8 +9,8 @@ website:
         text: Home
       - href: about.qmd
         text: About
-      - href: sandbox.ipynb
-        text: Sandbox
+      - href: notebook.ipynb
+        text: Notebook
 
 format:
   html:

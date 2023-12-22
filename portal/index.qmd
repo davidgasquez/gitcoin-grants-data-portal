@@ -19,6 +19,8 @@ You'll find the datasets in the following IPFS CID.
 
 Access it through [your favorite IPFS gateways](https://ipfs.github.io/public-gateway-checker/)!
 
+<code>${url}</code>
+
 ### 📊 Quick Data Stats
 
 ```{ojs}

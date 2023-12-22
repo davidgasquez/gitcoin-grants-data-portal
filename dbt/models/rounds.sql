@@ -31,7 +31,7 @@ extracted_metadata as (
         json_extract_path_text(metadata, 'name') as name,
         json_extract_path_text(metadata, 'roundType') as round_type,
         json_extract_path_text(metadata, 'programContractAddress') as program_address,
-        json_extract_path_text(metadata, '$.quadraticFundingConfig.sybilDefense')::boolean as sybil_defense        
+        json_extract_path_text(metadata, '$.quadraticFundingConfig.sybilDefense')::boolean as sybil_defense
     from renamed
 )
 

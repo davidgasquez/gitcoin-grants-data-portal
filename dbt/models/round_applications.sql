@@ -23,8 +23,8 @@ extracted_metadata as (
     select
         *,
         json_extract_path_text(metadata, 'signature') as signature,
-        lower(json_extract_path_text(metadata, '$.application.recipient')) as recipient   
+        lower(json_extract_path_text(metadata, '$.application.recipient')) as recipient
     from renamed
-)   
-    
+)
+
 select * from extracted_metadata

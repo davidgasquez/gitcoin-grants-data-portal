@@ -2,14 +2,15 @@
 title: "📖 About"
 ---
 
-The project covers the code and artifacts to help process Gitcoin Grants data from the [Allo Indexer Data API](https://indexer-production.fly.dev/data/). It is an instance of [Datadex](https://github.com/davidgasquez/datadex) allowing you and everyone else to:
+The project covers the code and artifacts to help process Gitcoin Grants data from the [Allo Indexer Data API](https://indexer-production.fly.dev/data/).  Read more about the [motivation and initial approach on my blog](https://davidgasquez.github.io/gitcoin-data/)!
 
-- Add new data sources to the portal, collaborate on better models (ala Dune) or submit an interesting analysis.
-- All in a permissionless way. Don't ask, fork it and improve the models, add a new source or update any script.
-- Declarative stateless transformations tracked in git, executed in GitHub Actions and published to IPFS. Data, artifacts (like the entire DuckDB database), and models all version controlled.
-- Share and explore dashboards and report with the world!
+## ⚙️ How It Works
 
-Read more about the [motivation and initial approach on my blog](https://davidgasquez.github.io/gitcoin-data/)!
+The portal is a customized instance of [Datadex](https://github.com/davidgasquez/datadex). With each push to `main`, a GitHub action will do the following:
+
+1. Scrape the [Allo Indexer Data API](https://indexer-production.fly.dev/data/) to produce tidy tables like `rounds` or `projects`.
+2. Clean, transform, and join the tables to produce a set of final models.
+3. The models are then exported to Parquet files and pushed to IPFS.
 
 ## 📦 Key Features
 
