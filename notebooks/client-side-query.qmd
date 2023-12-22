@@ -1,0 +1,27 @@
+---
+title: "Client Side Query Test"
+format: html
+---
+
+```{ojs}
+cid = await FileAttachment("https://raw.githubusercontent.com/davidgasquez/gitcoin-grants-data-portal/main/data/IPFS_CID").text()
+url = "https://ipfs.filebase.io/ipfs/" + cid.trim()
+```
+
+```{ojs}
+ggdp = DuckDBClient.of()
+r = ggdp.query(`
+    select
+        *
+    from parquet_scan('${url}/round_votes.parquet')
+`)
+
+```
+
+```{ojs}
+viewof search = Inputs.search(r, "project_id")
+```
+
+```{ojs}
+Inputs.table(search)
+```
