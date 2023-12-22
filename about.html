@@ -96,8 +96,8 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./sandbox.html"> 
-<span class="menu-text">Sandbox</span></a>
+    <a class="nav-link" href="./notebook.html"> 
+<span class="menu-text">Notebook</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -133,14 +133,16 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The project covers the code and artifacts to help process Gitcoin Grants data from the <a href="https://indexer-production.fly.dev/data/">Allo Indexer Data API</a>. It is an instance of <a href="https://github.com/davidgasquez/datadex">Datadex</a> allowing you and everyone else to:</p>
-<ul>
-<li>Add new data sources to the portal, collaborate on better models (ala Dune) or submit an interesting analysis.</li>
-<li>All in a permissionless way. Don’t ask, fork it and improve the models, add a new source or update any script.</li>
-<li>Declarative stateless transformations tracked in git, executed in GitHub Actions and published to IPFS. Data, artifacts (like the entire DuckDB database), and models all version controlled.</li>
-<li>Share and explore dashboards and report with the world!</li>
-</ul>
-<p>Read more about the <a href="https://davidgasquez.github.io/gitcoin-data/">motivation and initial approach on my blog</a>!</p>
+<p>The project covers the code and artifacts to help process Gitcoin Grants data from the <a href="https://indexer-production.fly.dev/data/">Allo Indexer Data API</a>. Read more about the <a href="https://davidgasquez.github.io/gitcoin-data/">motivation and initial approach on my blog</a>!</p>
+<section id="how-it-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-works">⚙️ How It Works</h2>
+<p>The portal is a customized instance of <a href="https://github.com/davidgasquez/datadex">Datadex</a>. With each push to <code>main</code>, a GitHub action will do the following:</p>
+<ol type="1">
+<li>Scrape the <a href="https://indexer-production.fly.dev/data/">Allo Indexer Data API</a> to produce tidy tables like <code>rounds</code> or <code>projects</code>.</li>
+<li>Clean, transform, and join the tables to produce a set of final models.</li>
+<li>The models are then exported to Parquet files and pushed to IPFS.</li>
+</ol>
+</section>
 <section id="key-features" class="level2">
 <h2 class="anchored" data-anchor-id="key-features">📦 Key Features</h2>
 <ul>
