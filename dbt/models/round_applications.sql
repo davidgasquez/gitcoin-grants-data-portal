@@ -17,6 +17,14 @@ renamed as (
         statusUpdatedAtBlock as status_updated_at_block,
         statusSnapshots as status_snapshots
     from source
-)
+),
 
-select * from renamed
+extracted_metadata as (
+    select
+        *,
+        json_extract_path_text(metadata, 'signature') as signature,
+        lower(json_extract_path_text(metadata, '$.application.recipient')) as recipient   
+    from renamed
+)   
+    
+select * from extracted_metadata
