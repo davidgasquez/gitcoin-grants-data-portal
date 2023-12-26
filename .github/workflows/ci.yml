@@ -30,9 +30,15 @@ jobs:
       run: |
         make run
 
-    - name: Export Database
+    - name: Export Database and Log File Sizes
       run: |
         python -c 'from ggdp import db; db.export_database_to_parquet("data/local.duckdb", "tables");'
+        echo "Files exported:" >> $GITHUB_STEP_SUMMARY
+        {
+          echo "| Filename | File Size |"
+          echo "| --- | --- |"
+          ls -lh tables | tail -n +2 | awk '{printf "| %s | %s |\n", $9, $5}'
+        } >> $GITHUB_STEP_SUMMARY
         ls -lh tables
 
     - uses: aquiladev/ipfs-action@master
