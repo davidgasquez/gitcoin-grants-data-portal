@@ -6,7 +6,9 @@ from dagster import asset
 from fsspec.implementations.http import HTTPFileSystem
 from retry import retry
 
+
 ALLO_INDEXER_URL = "https://indexer-production.fly.dev/data"
+CHAIN_METADATA_URL = "https://chainid.network/chains.json"
 
 
 def chain_file_aggregator(json_name):
@@ -123,3 +125,23 @@ def raw_round_contributors() -> pd.DataFrame:
     df = round_file_aggregator("contributors.json")
     df["roundId"] = '"' + df["roundId"] + '"'
     return df
+
+@asset(
+    description="Metadata for chains on which Gitcoin indexer registered at least one round. Source: `chainid.network/chains.json`"
+)
+def raw_chain_metadata(raw_rounds: pd.DataFrame) -> pd.DataFrame:
+    interesting_chains = raw_rounds.chainId.unique()
+
+    try:
+        chain_metadata = read_json_with_retry(CHAIN_METADATA_URL)
+    except Exception as e:
+        print(f"Error fetching chain list from {CHAIN_METADATA_URL}: {e}")
+        raise
+
+    df = pd.DataFrame(chain_metadata)
+    df = df.convert_dtypes()
+    df.chainId = df.chainId.astype(str)  # Save as VARCHAR to stay consistent with other models.
+    filtered_df = df[df.chainId.isin(interesting_chains)]
+
+    return filtered_df
+
