@@ -6,6 +6,9 @@ run:
 dev:
 	@dagster dev -m ggdp
 
+test:
+	@cd dbt && dbt test
+
 preview:
 	@quarto preview portal
 
