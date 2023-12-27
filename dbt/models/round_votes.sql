@@ -12,8 +12,8 @@ renamed as (
         projectId as project_id,
         applicationId as application_id,
         lower(voter) as voter,
-        grantAddress as grant_address,
-        token,
+        lower(grantAddress) as grant_address,
+        lower(token) as token,
         amount,
         amountUSD as amount_usd,
         amountRoundToken as amount_round_token

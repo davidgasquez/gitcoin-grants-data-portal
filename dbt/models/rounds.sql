@@ -4,10 +4,10 @@ with source as (
 
 renamed as (
     select
-        id,
+        lower(id) as id,
         amountUSD as amount_usd,
         votes,
-        token,
+        lower(token) as token,
         matchAmount as match_amount,
         matchAmountUSD as match_amount_usd,
         uniqueContributors as unique_contributors,
@@ -30,7 +30,7 @@ extracted_metadata as (
         *,
         json_extract_path_text(metadata, 'name') as name,
         json_extract_path_text(metadata, 'roundType') as round_type,
-        json_extract_path_text(metadata, 'programContractAddress') as program_address,
+        lower(json_extract_path_text(metadata, 'programContractAddress')) as program_address,
         json_extract_path_text(metadata, '$.quadraticFundingConfig.sybilDefense')::boolean as sybil_defense
     from renamed
 )
