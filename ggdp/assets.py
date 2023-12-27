@@ -144,4 +144,3 @@ def raw_chain_metadata(raw_rounds: pd.DataFrame) -> pd.DataFrame:
     filtered_df = df[df.chainId.isin(interesting_chains)]
 
     return filtered_df
-
