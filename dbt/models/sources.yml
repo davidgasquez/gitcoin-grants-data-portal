@@ -27,3 +27,7 @@ sources:
         meta:
           dagster:
             asset_key: ["raw_round_applications"]
+      - name: raw_chain_metadata
+        meta:
+          dagster:
+            asset_key: ["raw_chain_metadata"]
