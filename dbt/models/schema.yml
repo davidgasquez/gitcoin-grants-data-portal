@@ -1,0 +1,36 @@
+version: 2
+
+models:
+
+
+  - name : passport_scores
+    columns:
+      - name: address
+        tests: ['is_address_lowercase']
+
+  - name: projects
+    columns:
+      - name: chain_id
+        tests: ['not_null']
+
+  - name : round_applications
+    columns:
+      - name: recipient
+        tests: ['is_address_lowercase']
+
+  - name : round_votes
+    columns:
+      - name: voter
+        tests: ['not_null', 'is_address_lowercase']
+      - name: grant_address
+        tests: ['not_null','is_address_lowercase']
+      - name: token
+        tests: ['is_address_lowercase']   
+  
+  - name : rounds
+    columns:
+      - name: program_address
+        tests: ['is_address_lowercase']
+      - name: id
+        tests: ['is_address_lowercase']
+    
