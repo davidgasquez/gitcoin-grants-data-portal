@@ -25,12 +25,11 @@ models:
       - name: grant_address
         tests: ['not_null','is_address_lowercase']
       - name: token
-        tests: ['is_address_lowercase']   
-  
+        tests: ['is_address_lowercase']
+
   - name : rounds
     columns:
       - name: program_address
         tests: ['is_address_lowercase']
       - name: id
         tests: ['is_address_lowercase']
-    

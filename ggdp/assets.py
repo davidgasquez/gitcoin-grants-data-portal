@@ -6,7 +6,6 @@ from dagster import asset
 from fsspec.implementations.http import HTTPFileSystem
 from retry import retry
 
-
 ALLO_INDEXER_URL = "https://indexer-production.fly.dev/data"
 CHAIN_METADATA_URL = "https://chainid.network/chains.json"
 
@@ -126,10 +125,12 @@ def raw_round_contributors() -> pd.DataFrame:
     df["roundId"] = '"' + df["roundId"] + '"'
     return df
 
-@asset(
-    description="Metadata for chains on which Gitcoin indexer registered at least one round. Source: `chainid.network/chains.json`"
-)
+
+@asset
 def raw_chain_metadata(raw_rounds: pd.DataFrame) -> pd.DataFrame:
+    """
+    Metadata for chains on which Gitcoin indexer registered at least one round. Source: `chainid.network/chains.json`
+    """
     interesting_chains = raw_rounds.chainId.unique()
 
     try:
@@ -140,7 +141,9 @@ def raw_chain_metadata(raw_rounds: pd.DataFrame) -> pd.DataFrame:
 
     df = pd.DataFrame(chain_metadata)
     df = df.convert_dtypes()
-    df.chainId = df.chainId.astype(str)  # Save as VARCHAR to stay consistent with other models.
+    df.chainId = df.chainId.astype(
+        str
+    )  # Save as VARCHAR to stay consistent with other models.
     filtered_df = df[df.chainId.isin(interesting_chains)]
 
     return filtered_df
