@@ -6,6 +6,7 @@ from dagster_duckdb import DuckDBResource
 from dagster_duckdb_pandas import DuckDBPandasIOManager
 
 from . import assets
+from . import resources as res
 
 DBT_PROJECT_DIR = os.path.dirname(os.path.abspath(__file__)) + "/../dbt/"
 
@@ -16,7 +17,8 @@ dbt_resource = dbt_cli_resource.configured(
 dbt_assets = load_assets_from_dbt_project(DBT_PROJECT_DIR, DBT_PROJECT_DIR)
 all_assets = load_assets_from_modules([assets])
 
-resources = {
+configured_resources = {
+    "covalent": res.CovalentAPI_Resource(),
     "dbt": dbt_resource,
     "duckdb": DuckDBResource(database="data/local.duckdb"),
     "io_manager": DuckDBPandasIOManager(
@@ -24,4 +26,4 @@ resources = {
     ),
 }
 
-defs = Definitions(assets=[*dbt_assets, *all_assets], resources=resources)
+defs = Definitions(assets=[*dbt_assets, *all_assets], resources=configured_resources)
