@@ -11,6 +11,8 @@ website:
         text: About
       - href: notebook.ipynb
         text: Notebook
+      - href: catalog.ipynb
+        text: Catalog
 
 format:
   html:
