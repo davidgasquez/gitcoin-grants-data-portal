@@ -12,7 +12,7 @@ Your open source, serverless, and local-first Data Platform for Gitcoin Grants D
 
 ## 📂 Gitcoin Grants Data
 
-You can get the latest data a Parquet files from IPFS. The data lives under the [IPFS CID](https://raw.githubusercontent.com/davidgasquez/gitcoin-grants-data-portal/main/data/IPFS_CID) pointer available in this repository.
+Data is living as multiple Parquet files at IPFS! You can get them all at the [IPFS CID](https://raw.githubusercontent.com/davidgasquez/gitcoin-grants-data-portal/main/data/IPFS_CID) pointer available in this repository.
 
 The following command will give you a working URL to explore the available tables.
 
@@ -23,6 +23,12 @@ LATEST_IPFS_CID=$(curl https://raw.githubusercontent.com/davidgasquez/gitcoin-gr
 # Print the Gateway URL with all the tables
 echo https://ipfs.filebase.io/ipfs/$LATEST_IPFS_CID/
 ```
+
+### 📌 IPNS
+
+You can also go to [`k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc`](https://ipfs.filebase.io/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/), which points to the latest available data via IPNS.
+
+You can use IPNS from your favorite tools. E.g: `pd.read_parquet('https://ipfs.filebase.io/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/rounds.parquet')`
 
 ## 📖 Overview
 
