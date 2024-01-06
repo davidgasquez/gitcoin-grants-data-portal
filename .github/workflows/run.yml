@@ -41,7 +41,7 @@ jobs:
         } >> $GITHUB_STEP_SUMMARY
         ls -lh tables
 
-    - uses: aquiladev/ipfs-action@master
+    - uses: filebase/ipfs-action@master
       id: ipfs
       with:
         path: ./tables
@@ -50,6 +50,7 @@ jobs:
         filebaseBucket: gitcoin-grants-data-portal
         filebaseKey: ${{ secrets.FILEBASE_KEY }}
         filebaseSecret: ${{ secrets.FILEBASE_SECRET }}
+        key: gitcoin-grants-data-portal-db
 
     - name: Create CID file
       run: echo ${{ steps.ipfs.outputs.cid }} > data/IPFS_CID
