@@ -37,9 +37,9 @@ jobs:
         {
           echo "| Filename | File Size |"
           echo "| --- | --- |"
-          ls -lh tables | tail -n +2 | awk '{printf "| %s | %s |\n", $9, $5}'
+          ls -lh data/tables | tail -n +2 | awk '{printf "| %s | %s |\n", $9, $5}'
         } >> $GITHUB_STEP_SUMMARY
-        ls -lh tables
+        ls -lh data/tables
     - name: Install Quarto
       uses: quarto-dev/quarto-actions/setup@v2
     - name: Render
