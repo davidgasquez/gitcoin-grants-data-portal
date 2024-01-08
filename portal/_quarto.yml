@@ -13,6 +13,8 @@ website:
         text: Notebook
       - href: catalog.ipynb
         text: Catalog
+      - href: dbt
+        text: dbt Docs
 
 format:
   html:

@@ -30,7 +30,7 @@ jobs:
 
     - name: Export Database and Log File Sizes
       run: |
-        python -c 'from ggdp import db; db.export_database_to_parquet("data/local.duckdb", "tables");'
+        make tables
         echo "Files exported:" >> $GITHUB_STEP_SUMMARY
         {
           echo "| Filename | File Size |"
