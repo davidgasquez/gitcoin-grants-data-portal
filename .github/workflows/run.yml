@@ -16,9 +16,6 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -56,9 +53,6 @@ jobs:
       uses: actions/upload-pages-artifact@v3
       with:
         path: portal/_site
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v1
     - name: Push to IPFS
       uses: filebase/ipfs-action@master
       id: ipfs
@@ -83,3 +77,20 @@ jobs:
           git commit -m "chore: :id: Update CID"
           git push
         fi
+
+  deploy:
+    needs: run
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
