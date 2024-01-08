@@ -6,7 +6,7 @@
 
 [![CI](https://github.com/davidgasquez/gitcoin-grants-data-portal/actions/workflows/ci.yml/badge.svg)](https://github.com/davidgasquez/gitcoin-grants-data-portal/actions/workflows/ci.yml)
 
-Your open source, serverless, and local-first Data Platform for Gitcoin Grants Data. With this data hub, we aim to improve data access and empower data scientists to conduct research and guide community driven analysis and decisions!
+Open source, serverless, and local-first Data Platform for Gitcoin Grants Data. This data hub improves data access and empower data scientists to conduct research that guides community driven analysis.
 
 ![img](https://user-images.githubusercontent.com/1682202/268236925-d44915ab-d46b-49ff-85ec-2ad06bcfe5e0.png)
 

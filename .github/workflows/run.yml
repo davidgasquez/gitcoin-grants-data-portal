@@ -8,11 +8,18 @@ on:
     - cron: "0 10 * * 1"
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   run:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-
     - name: Checkout
       uses: actions/checkout@v4
 
@@ -21,15 +28,12 @@ jobs:
       with:
         python-version: 3.11
         cache: pip
-
     - name: Install dependencies
       run: |
         pip install -e .
-
     - name: Run
       run: |
         make run
-
     - name: Export Database and Log File Sizes
       run: |
         make tables
@@ -48,7 +52,15 @@ jobs:
     - name: Copy Portal
       run: |
         cp -r portal/_site data/tables/portal
-    - uses: filebase/ipfs-action@master
+    - name: Upload Pages Artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: portal/_site
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
+    - name: Push to IPFS
+      uses: filebase/ipfs-action@master
       id: ipfs
       with:
         path: ./data/tables
@@ -58,10 +70,8 @@ jobs:
         filebaseKey: ${{ secrets.FILEBASE_KEY }}
         filebaseSecret: ${{ secrets.FILEBASE_SECRET }}
         key: gitcoin-grants-data-portal-db
-
     - name: Update CID file
       run: echo ${{ steps.ipfs.outputs.cid }} > data/IPFS_CID
-
     - name: Commit and Push
       run: |
         git config --global user.name "GitHub Action"
