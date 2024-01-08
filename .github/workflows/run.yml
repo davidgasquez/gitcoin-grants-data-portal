@@ -8,13 +8,12 @@ on:
     - cron: "0 10 * * 1"
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 jobs:
   run:
+    # permissions:
+    #   contents: write
+    #   pages: write
+    #   id-token: write
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
