@@ -1,11 +1,12 @@
 import os
 
-from dagster import Definitions, load_assets_from_modules
+from dagster import Definitions, load_assets_from_modules, define_asset_job
 from dagster_dbt import dbt_cli_resource, load_assets_from_dbt_project
 from dagster_duckdb import DuckDBResource
 from dagster_duckdb_pandas import DuckDBPandasIOManager
 
 from . import assets
+from . import ops
 
 DBT_PROJECT_DIR = os.path.dirname(os.path.abspath(__file__)) + "/../dbt/"
 
@@ -24,4 +25,17 @@ resources = {
     ),
 }
 
-defs = Definitions(assets=[*dbt_assets, *all_assets], resources=resources)
+build_all_assets = define_asset_job(
+    name="build_all", selection="*", description="Materialize all assets"
+)
+build_indexer_assets = define_asset_job(
+    name="build_light_assets",
+    selection=["++rounds", "++projects"],
+    description="Materialize downstream of Gitcoin indexer-provided rounds, projects",
+)
+
+job_definitions = [ops.refresh_dune, build_all_assets, build_indexer_assets]
+
+defs = Definitions(
+    assets=[*dbt_assets, *all_assets], resources=resources, jobs=job_definitions
+)
