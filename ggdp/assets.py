@@ -175,7 +175,7 @@ def raw_allo_deployments() -> pd.DataFrame:
     compute_kind="Covalent_API",
     group_name="chain_data",
 )
-def ethereum_project_registry_tx(covalentAPI: CovalentAPIResource):
+def ethereum_project_registry_tx(covalent_api: CovalentAPIResource):
     """
     All Ethereum mainnet transactions targeting project registry, from Covalent
     """

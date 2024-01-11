@@ -20,7 +20,7 @@ dbt_assets = load_assets_from_dbt_project(DBT_PROJECT_DIR, DBT_PROJECT_DIR)
 all_assets = load_assets_from_modules([assets])
 
 resources = {
-    "covalentAPI": res.CovalentAPIResource(API_KEY=EnvVar("COVALENT_API_KEY")),
+    "covalent_api": res.CovalentAPIResource(API_KEY=EnvVar("COVALENT_API_KEY")),
     "dbt": dbt_resource,
     "duckdb": DuckDBResource(database="data/local.duckdb"),
     "io_manager": DuckDBPandasIOManager(
