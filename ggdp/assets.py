@@ -6,6 +6,9 @@ from dagster import asset
 from fsspec.implementations.http import HTTPFileSystem
 from retry import retry
 
+
+from .resources import CovalentAPIResource
+
 ALLO_INDEXER_URL = "https://indexer-production.fly.dev/data"
 CHAIN_METADATA_URL = "https://chainid.network/chains.json"
 
@@ -166,3 +169,22 @@ def raw_allo_deployments() -> pd.DataFrame:
         "https://cloudflare-ipfs.com/ipfs/QmWpnErRwVRLqdGsBC2J9NMngwzJtWErDZvf6wDqJ1ZVis"
     )
     return ipfs_content
+
+
+@asset(
+    compute_kind="Covalent_API",
+    group_name="chain_data",
+)
+def ethereum_project_registry_tx(covalentAPI: CovalentAPIResource):
+    """
+    All Ethereum mainnet transactions targeting project registry, from Covalent
+    """
+
+    all_tx = covalentAPI.fetch_all_tx_for_address(
+        "eth-mainnet", "0x03506eD3f57892C85DB20C36846e9c808aFe9ef4"
+    )
+
+    dataframes = [pd.DataFrame(data.get("items")) for data in all_tx]
+    combined_df = pd.concat(dataframes, ignore_index=True)
+
+    return combined_df

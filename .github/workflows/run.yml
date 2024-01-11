@@ -30,6 +30,9 @@ jobs:
     - name: Run
       run: |
         make run
+      env:
+        COVALENT_API_KEY: ${{ secrets.COVALENT_KEY }}
+
     - name: Export Database and Log File Sizes
       run: |
         make tables
