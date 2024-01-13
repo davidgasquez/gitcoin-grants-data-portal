@@ -180,7 +180,7 @@ def ethereum_project_registry_tx(covalent_api: CovalentAPIResource):
     All Ethereum mainnet transactions targeting project registry, from Covalent
     """
 
-    all_tx = covalentAPI.fetch_all_tx_for_address(
+    all_tx = covalent_api.fetch_all_tx_for_address(
         "eth-mainnet", "0x03506eD3f57892C85DB20C36846e9c808aFe9ef4"
     )
 
