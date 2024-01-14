@@ -26,7 +26,21 @@ jobs:
 
     - name: Run
       run: |
-        make run
+        set -o pipefail
+        make run 2>&1 | tee dagster.log
+
+    - name: Extract Step Execution time from logs
+      run: |
+        echo "Dagster step timings:" >> $GITHUB_STEP_SUMMARY
+        echo "Step Name | Execution Time" >> $GITHUB_STEP_SUMMARY
+        echo "-----------|----------------" >> $GITHUB_STEP_SUMMARY
+        while IFS= read -r line; do
+          if [[ $line == *"STEP_SUCCESS"* ]]; then
+            step_name=$(echo "$line" | awk -F' - ' '{print $7}')
+            exec_time=$(echo "$line" | awk -F' - ' '{split($9,a," "); print a[7]}')
+            echo "$step_name | $exec_time" >> $GITHUB_STEP_SUMMARY
+          fi
+        done < dagster.log
 
     - name: Export Database and Log File Sizes
       run: |
