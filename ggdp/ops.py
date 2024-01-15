@@ -4,9 +4,9 @@ import os
 
 import pandas as pd
 import requests as rq
+from dagster import OpExecutionContext, job, op
 
 from .assets import raw_allo_deployments
-from dagster import op, job, OpExecutionContext
 
 
 @op()

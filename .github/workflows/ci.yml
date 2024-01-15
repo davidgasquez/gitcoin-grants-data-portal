@@ -29,7 +29,7 @@ jobs:
         set -o pipefail
         make run 2>&1 | tee dagster.log
       env:
-          COVALENT_API_KEY: ${{ secrets.COVALENT_API_KEY }}
+        COVALENT_API_KEY: ${{ secrets.COVALENT_API_KEY }}
 
     - name: Extract Step Execution time from logs
       run: |

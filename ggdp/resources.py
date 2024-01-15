@@ -11,9 +11,9 @@ class CovalentAPIResource(ConfigurableResource):
 
     def fetch_tx_page_for_address(self, chain_name: str, address: str, page: int):
         root = f"https://api.covalenthq.com/v1/{chain_name}/address/{address}/transactions_v3/page/{str(page)}/"
-        page = requests.get(root, auth=(self.API_KEY, ""))
-        page.raise_for_status()
-        return page.json()
+        response = requests.get(root, auth=(self.API_KEY, ""))
+        response.raise_for_status()
+        return response.json()
 
     def fetch_all_tx_for_address(self, chain_name: str, address: str):
         output = []

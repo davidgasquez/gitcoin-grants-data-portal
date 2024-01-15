@@ -1,14 +1,12 @@
 import os
 
-
-from dagster import Definitions, load_assets_from_modules, define_asset_job, EnvVar
+from dagster import Definitions, EnvVar, define_asset_job, load_assets_from_modules
 from dagster_dbt import dbt_cli_resource, load_assets_from_dbt_project
 from dagster_duckdb import DuckDBResource
 from dagster_duckdb_pandas import DuckDBPandasIOManager
 
-from . import assets
+from . import assets, ops
 from . import resources as res
-from . import ops
 
 DBT_PROJECT_DIR = os.path.dirname(os.path.abspath(__file__)) + "/../dbt/"
 

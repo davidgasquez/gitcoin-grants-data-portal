@@ -6,7 +6,6 @@ from dagster import asset
 from fsspec.implementations.http import HTTPFileSystem
 from retry import retry
 
-
 from .resources import CovalentAPIResource
 
 ALLO_INDEXER_URL = "https://indexer-production.fly.dev/data"
