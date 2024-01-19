@@ -169,6 +169,20 @@ def raw_allo_deployments() -> pd.DataFrame:
     )
     return ipfs_content
 
+@asset
+def my_new_asset() -> pd.DataFrame:
+    """
+    Deployment address for all official allo contract deployments by Allo team, collected 07.01.24
+
+    Canonical source: https://github.com/allo-protocol/allo-contracts/blob/main/docs/CHAINS.md
+    Ingestion logic: https://gist.github.com/DistributedDoge/57e39c3e5cc207fcafdf4d377562ec33
+    """
+    ipfs_content = read_parquet_with_retry(
+        "https://cloudflare-ipfs.com/ipfs/QmWpnErRwVRLqdGsBC2J9NMngwzJtWErDZvf6wDqJ1ZVis"
+    )
+    return ipfs_content
+
+
 
 @asset(
     compute_kind="Covalent_API",
