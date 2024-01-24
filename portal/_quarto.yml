@@ -8,7 +8,7 @@ website:
       - href: index.qmd
         text: Home
       - href: https://ipfs.filebase.io/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/
-        text: Data        
+        text: Data
       - href: about.qmd
         text: About
       - href: reports.ipynb
@@ -17,7 +17,15 @@ website:
         text: Catalog
       - href: dbt
         text: dbt Docs
-
+    tools:
+      - icon: twitter
+        href: https://twitter.com/davidgasquez
+      - icon: github
+        menu:
+          - text: Source Code
+            url: https://github.com/davidgasquez/gitcoin-grants-data-portal
+          - text: Create an Issue
+            url: https://github.com/davidgasquez/gitcoin-grants-data-portal/issues/new
 format:
   html:
     theme:
