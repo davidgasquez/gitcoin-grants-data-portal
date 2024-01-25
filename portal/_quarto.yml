@@ -17,7 +17,15 @@ website:
         text: Catalog
       - href: dbt
         text: dbt Docs
-
+    tools:
+      - icon: twitter
+        href: https://twitter.com/davidgasquez
+      - icon: github
+        menu:
+          - text: Source Code
+            url: https://github.com/davidgasquez/gitcoin-grants-data-portal
+          - text: Create an Issue
+            url: https://github.com/davidgasquez/gitcoin-grants-data-portal/issues/new
 format:
   html:
     theme:
