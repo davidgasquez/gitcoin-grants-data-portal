@@ -1,56 +1,20 @@
 ---
-title: "🌲 Gitcoin Grants Data Portal"
 execute:
   echo: false
 ---
 
-Welcome to the Gitcoin Grants Data Portal. Your open source, serverless, and local-first Data Platform for Gitcoin Grants Data. With this data hub, we aim to improve data access and empower data scientists to conduct research and guide community driven analysis and decisions!
+<center>
+    <a><img src="https://user-images.githubusercontent.com/1682202/271937380-10d6e036-5fe4-4ea6-b3b4-8e3001c21289.png" width="100px"/></a>
+</center>
 
-```{ojs}
-cid = fetch("https://raw.githubusercontent.com/davidgasquez/gitcoin-grants-data-portal/main/data/IPFS_CID")
-  .then((response) => response.text()).then((text) => text.trim())
-gateway_url = "https://ipfs.filebase.io/ipfs/"
-url = gateway_url + cid
-```
+<center>
+    <h1>Gitcoin Grants Data Portal</h1>
+</center>
 
-You'll find the datasets in the following IPFS CID.
+Welcome to your open source, serverless, and local-first Data Platform for Gitcoin Grants Data. With this data hub, we aim to improve data access and empower data scientists to conduct research and guide community driven analysis and decisions!
 
-<code>${cid}</code>
-
-Access it through [your favorite IPFS gateways](https://ipfs.github.io/public-gateway-checker/)!
-
-<code>${url}</code>
-
-### 📊 Quick Data Stats
-
-```{ojs}
-ggdp = DuckDBClient.of()
-
-number_of_rounds = ggdp.query(`
-    select
-        count(id) as c
-    from parquet_scan('${url}/rounds.parquet')
-`)
-
-round_votes = ggdp.query(`
-    select
-        count(id) as c
-    from parquet_scan('${url}/round_votes.parquet')
-`)
-
-projects = ggdp.query(`
-    select
-        count(1) as c
-    from parquet_scan('${url}/projects.parquet')
-`)
-
-round_votes_scalar = round_votes[0]["c"]
-number_of_rounds_scalar = number_of_rounds[0]["c"]
-projects_scalar = projects[0]["c"]
-```
-
-- Rounds of Gitcoin Grants: <code>${number_of_rounds_scalar}</code>
-- Round votes: <code>${round_votes_scalar}</code>
-- Projects: <code>${projects_scalar}</code>
-
-_This data is queried live from your browser using [DuckDB WASM](https://duckdb.org/docs/api/wasm/overview.html)._
+<center>
+    [Get the Data](https://ipfs.filebase.io/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/){.btn .btn-outline-secondary .btn role="button"}
+    [Explore the Catalog](catalog.html){.btn .btn-outline-secondary .btn role="button"}
+    [Contribute](https://github.com/davidgasquez/gitcoin-grants-data-portal){.btn .btn-outline-secondary .btn role="button"}
+</center>

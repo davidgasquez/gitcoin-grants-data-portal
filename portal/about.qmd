@@ -34,3 +34,38 @@ The portal is a customized instance of [Datadex](https://github.com/davidgasquez
 - **Modern**
   - It supports all the cool things data engineers want; typing, tests, materialized views, dev branches, ...
   - Uses best practices (declarative transformations) and state of the art tooling (DuckDB).
+
+
+### 📊 Quick Data Stats
+
+```{ojs}
+ggdp = DuckDBClient.of()
+
+number_of_rounds = ggdp.query(`
+    select
+        count(id) as c
+    from parquet_scan('${url}/rounds.parquet')
+`)
+
+round_votes = ggdp.query(`
+    select
+        count(id) as c
+    from parquet_scan('${url}/round_votes.parquet')
+`)
+
+projects = ggdp.query(`
+    select
+        count(1) as c
+    from parquet_scan('${url}/projects.parquet')
+`)
+
+round_votes_scalar = round_votes[0]["c"]
+number_of_rounds_scalar = number_of_rounds[0]["c"]
+projects_scalar = projects[0]["c"]
+```
+
+- Rounds of Gitcoin Grants: <code>${number_of_rounds_scalar}</code>
+- Round votes: <code>${round_votes_scalar}</code>
+- Projects: <code>${projects_scalar}</code>
+
+_This data is queried live from your browser using [DuckDB WASM](https://duckdb.org/docs/api/wasm/overview.html)._
