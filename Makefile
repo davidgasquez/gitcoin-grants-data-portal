@@ -1,7 +1,10 @@
 .DEFAULT_GOAL := run
 
 run:
-	@dagster asset materialize --select \* -m ggdp
+	@dagster job execute -j data_assets_job -m ggdp
+
+apis:
+	@dagster job execute -j private_apis_assets_job -m ggdp
 
 tables:
 	@python -c 'from ggdp import db; db.export_database_to_parquet("data/local.duckdb", "data/tables");'
