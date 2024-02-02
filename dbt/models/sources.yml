@@ -31,3 +31,7 @@ sources:
         meta:
           dagster:
             asset_key: ["raw_chain_metadata"]
+      - name: raw_giveth_projects
+        meta:
+          dagster:
+            asset_key: ["raw_giveth_projects"]
