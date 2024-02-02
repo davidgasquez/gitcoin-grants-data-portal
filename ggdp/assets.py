@@ -11,6 +11,7 @@ from .resources import CovalentAPIResource
 ALLO_INDEXER_URL = "https://indexer-production.fly.dev/data"
 CHAIN_METADATA_URL = "https://chainid.network/chains.json"
 
+GIVETH_GQL_ENDPOINT = "https://mainnet.serve.giveth.io/graphql"
 
 def chain_file_aggregator(json_name):
     fs = HTTPFileSystem(simple_links=True)
@@ -187,3 +188,42 @@ def ethereum_project_registry_tx(covalent_api: CovalentAPIResource):
     combined_df = pd.concat(dataframes, ignore_index=True)
 
     return combined_df
+
+
+@retry(tries=8, delay=2, backoff=2, max_delay=10)
+def fetch_giveth_projects(url, query):
+    all_projects = []
+    skip = 0
+
+    while True:
+        response = requests.post(url, json={'query': query, 'variables': {'skip': skip}})
+        data = response.json()
+
+        projects = data['data']['allProjects']['projects']
+        all_projects.extend(projects)
+        skip += 50
+
+        if skip >= data['data']['allProjects']['totalCount']:
+            break
+    return all_projects
+
+@asset
+def raw_giveth_projects():
+    url = GIVETH_GQL_ENDPOINT
+    query = """
+        query GetProjects($skip: Int!) {
+            allProjects(take: 50, limit: 50, skip: $skip) {
+                totalCount
+                projects {
+                    title
+                    totalDonations
+                    totalTraceDonations
+                }
+            }
+        }
+    """
+
+    all_projects = fetch_giveth_projects(url, query)
+    giveth = pd.DataFrame(all_projects)
+    giveth.convert_dtypes()
+    return giveth
