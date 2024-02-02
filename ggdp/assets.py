@@ -6,12 +6,12 @@ from dagster import asset
 from fsspec.implementations.http import HTTPFileSystem
 from retry import retry
 
-from .resources import CovalentAPIResource
+from .resources import CovalentAPIResource, DuneResource
 
 ALLO_INDEXER_URL = "https://indexer-production.fly.dev/data"
 CHAIN_METADATA_URL = "https://chainid.network/chains.json"
-
 GIVETH_GQL_ENDPOINT = "https://mainnet.serve.giveth.io/graphql"
+
 
 def chain_file_aggregator(json_name):
     fs = HTTPFileSystem(simple_links=True)
@@ -124,6 +124,8 @@ def raw_round_votes() -> pd.DataFrame:
 def raw_round_applications() -> pd.DataFrame:
     applications = round_file_aggregator("applications.json")
     applications["metadata"] = applications["metadata"].apply(json.dumps)
+    applications["roundId"] = '"' + applications["roundId"] + '"'
+    applications = applications.convert_dtypes()
     return applications
 
 
@@ -171,10 +173,17 @@ def raw_allo_deployments() -> pd.DataFrame:
     return ipfs_content
 
 
-@asset(
-    compute_kind="Covalent_API",
-    group_name="chain_data",
-)
+@asset(compute_kind="API", group_name="private_api")
+def dune_allo_deployments(
+    dune: DuneResource, raw_allo_deployments: pd.DataFrame
+) -> None:
+    """
+    Uploads allo deployments to Dune.
+    """
+    dune.upload_csv(raw_allo_deployments, "allo_contract_deployments")
+
+
+@asset(compute_kind="API", group_name="private_api")
 def ethereum_project_registry_tx(covalent_api: CovalentAPIResource):
     """
     All Ethereum mainnet transactions targeting project registry, from Covalent
@@ -196,16 +205,19 @@ def fetch_giveth_projects(url, query):
     skip = 0
 
     while True:
-        response = requests.post(url, json={'query': query, 'variables': {'skip': skip}})
+        response = requests.post(
+            url, json={"query": query, "variables": {"skip": skip}}
+        )
         data = response.json()
 
-        projects = data['data']['allProjects']['projects']
+        projects = data["data"]["allProjects"]["projects"]
         all_projects.extend(projects)
         skip += 50
 
-        if skip >= data['data']['allProjects']['totalCount']:
+        if skip >= data["data"]["allProjects"]["totalCount"]:
             break
     return all_projects
+
 
 @asset
 def raw_giveth_projects():
