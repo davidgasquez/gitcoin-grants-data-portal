@@ -21,6 +21,8 @@ extracted_metadata as (
         json_extract_path_text(metadata, 'description') as description,
         json_extract_path_text(metadata, 'website') as website,
         json_extract_path_text(metadata, 'projectTwitter') as project_twitter,
+        json_extract_path_text(metadata, 'projectGithub') as project_github,
+        json_extract_path_text(metadata, 'userGithub') as user_github,
         json_extract_path_text(metadata, 'logoImg') as logo_image,
         json_extract_path_text(metadata, 'bannerImg') as banner_image,
         json_extract_path_text(metadata, 'createdAt')::numeric as created_at,
