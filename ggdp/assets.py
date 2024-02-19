@@ -2,11 +2,11 @@ import json
 
 import pandas as pd
 import requests
+from retry import retry
 from dagster import asset
 from fsspec.implementations.http import HTTPFileSystem
-from retry import retry
 
-from .resources import CovalentAPIResource, DuneResource
+from .resources import DuneResource, CovalentAPIResource
 
 ALLO_INDEXER_URL = "https://indexer-production.fly.dev/data"
 CHAIN_METADATA_URL = "https://chainid.network/chains.json"

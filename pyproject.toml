@@ -48,10 +48,18 @@ build-backend = "setuptools.build_meta"
 packages = ["ggdp"]
 
 [tool.setuptools.package-data]
-"datadex" = ["../dbt/**"]
+"ggdp" = ["../dbt/**"]
+
+[tool.dagster]
+module_name = "ggdp"
 
 [tool.sqlfmt]
 line_length = 120
 check = true
 fast = false
 dialect = "duckdb"
+
+[tool.ruff.lint.isort]
+case-sensitive = true
+combine-as-imports = true
+length-sort = true

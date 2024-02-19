@@ -10,7 +10,13 @@ tables:
 	@python -c 'from ggdp import db; db.export_database_to_parquet("data/local.duckdb", "data/tables");'
 
 dev:
-	@dagster dev -m ggdp
+	@dagster dev
+
+setup:
+	@command -v uv >/dev/null 2>&1 || pip install -U uv
+	uv venv
+	uv pip install -U -e .[dev]
+	. .venv/bin/activate
 
 test:
 	@cd dbt && dbt test

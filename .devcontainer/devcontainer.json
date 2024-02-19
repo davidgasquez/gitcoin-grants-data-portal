@@ -19,8 +19,8 @@
         "[python]": {
           "editor.formatOnSave": true,
           "editor.codeActionsOnSave": {
-            "source.fixAll": true,
-            "source.organizeImports": true
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
           },
           "editor.defaultFormatter": "charliermarsh.ruff"
         },
@@ -34,7 +34,6 @@
         "charliermarsh.ruff",
         "EditorConfig.EditorConfig",
         "innoverio.vscode-dbt-power-user",
-        "ms-python.isort",
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-toolsai.datawrangler",
@@ -46,5 +45,5 @@
       ]
     }
   },
-  "postCreateCommand": "pip install -e '.[dev]'"
+  "postCreateCommand": "make setup"
 }
