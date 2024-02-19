@@ -239,3 +239,30 @@ def raw_giveth_projects():
     giveth = pd.DataFrame(all_projects)
     giveth.convert_dtypes()
     return giveth
+
+
+@asset
+def raw_discourse_categories():
+    """
+    Listing of categories from "Discourse" of various communities.
+
+    Use 'source' column to group categories by Discourse instance.
+    """
+    forums = {
+        "Gitcoin": "https://gov.gitcoin.co",
+        "Giveth": "https://forum.giveth.io",
+        "Arbitrum": "https://forum.arbitrum.foundation",
+        "Optimism": "https://gov.optimism.io/",
+    }
+
+    data = []
+    for community, forum_address in forums.items():
+        catalog = read_json_with_retry(f"{forum_address}/categories.json")
+        catalog = catalog["category_list"]["categories"]
+        for category in catalog:
+            category["source"] = community
+        data.extend(catalog)
+
+    discourse_df = pd.DataFrame(data)
+    discourse_df = discourse_df.convert_dtypes()
+    return discourse_df
