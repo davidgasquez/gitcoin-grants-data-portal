@@ -24,20 +24,6 @@ def raw_chain_metadata(raw_allo_rounds: pd.DataFrame) -> pd.DataFrame:
     return filtered_df
 
 
-@asset(retry_policy=RetryPolicy(max_retries=3, delay=0.2, backoff=Backoff.EXPONENTIAL))
-def raw_allo_deployments() -> pd.DataFrame:
-    """
-    Deployment address for all official allo contract deployments by Allo team, collected 07.01.24
-
-    Canonical source: https://github.com/allo-protocol/allo-contracts/blob/main/docs/CHAINS.md
-    Ingestion logic: https://gist.github.com/DistributedDoge/57e39c3e5cc207fcafdf4d377562ec33
-    """
-    ipfs_content = pd.read_parquet(
-        "https://cloudflare-ipfs.com/ipfs/QmWpnErRwVRLqdGsBC2J9NMngwzJtWErDZvf6wDqJ1ZVis"
-    )
-    return ipfs_content
-
-
 @asset(compute_kind="API")
 def dune_allo_deployments(
     dune: DuneResource, raw_allo_deployments: pd.DataFrame
@@ -131,3 +117,16 @@ def raw_discourse_categories():
     discourse_df = pd.DataFrame(data)
     discourse_df = discourse_df.convert_dtypes()
     return discourse_df
+
+
+@asset
+def raw_gitcoin_passport_scores() -> pd.DataFrame:
+    file_url = "https://indexer-production.fly.dev/data/passport_scores.json"
+    df = pd.read_json(file_url)
+    df = df.drop(columns=["error", "stamp_scores"])
+
+    df["last_score_timestamp"] = pd.to_datetime(
+        df["last_score_timestamp"], errors="coerce"
+    )
+
+    return df[df["address"].str.startswith("0x")]

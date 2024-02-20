@@ -21,9 +21,7 @@ resources = {
     "indexer_graphql": res.GrantsStackIndexerGraphQL(),
     "dbt": dbt_resource,
     "duckdb": DuckDBResource(database="data/local.duckdb"),
-    "io_manager": DuckDBPandasIOManager(
-        database="data/local.duckdb",
-    ),
+    "io_manager": DuckDBPandasIOManager(database="data/local.duckdb"),
 }
 
 defs = Definitions(

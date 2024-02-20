@@ -77,3 +77,27 @@ class GrantsStackIndexerGraphQL(ConfigurableResource):
         )
         response.raise_for_status()
         return response.json()
+
+    def paginated_query(self, query: str, variables: dict = {}, size=100):
+        output = []
+        page = 0
+
+        while True:
+            latest_data = self.query(
+                query,
+                variables={
+                    **variables,
+                    "first": size,
+                    "offset": page * size,
+                },
+            )
+
+            first_key = next(iter(latest_data["data"]))
+
+            if not latest_data["data"] or len(latest_data["data"][first_key]) < size:
+                break
+
+            output.extend(latest_data["data"][first_key])
+            page += 1
+
+        return output
