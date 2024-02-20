@@ -15,10 +15,10 @@ sources:
         meta:
           dagster:
             asset_key: ["raw_prices"]
-      - name: raw_rounds
+      - name: raw_allo_rounds
         meta:
           dagster:
-            asset_key: ["raw_rounds"]
+            asset_key: ["raw_allo_rounds"]
       - name: raw_round_votes
         meta:
           dagster:

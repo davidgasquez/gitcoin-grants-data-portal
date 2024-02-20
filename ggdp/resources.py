@@ -65,3 +65,15 @@ class DuneResource(ConfigurableResource):
         response.raise_for_status()
 
         return response
+
+
+class GrantsStackIndexerGraphQL(ConfigurableResource):
+    ENDPOINT: str = "https://grants-stack-indexer-v2.gitcoin.co/graphql"
+
+    def query(self, query: str, variables: dict = {}):
+        response = requests.post(
+            self.ENDPOINT,
+            json={"query": query, "variables": variables},
+        )
+        response.raise_for_status()
+        return response.json()
