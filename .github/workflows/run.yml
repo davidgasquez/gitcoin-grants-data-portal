@@ -49,22 +49,22 @@ jobs:
       run: |
         make render
 
-    - name: Copy Portal
-      run: |
-        cp -r portal/_site data/tables/portal
-
     - name: Upload Pages Artifact
       if: github.event_name == 'push'
       uses: actions/upload-pages-artifact@v3
       with:
         path: portal/_site
 
+    - name: Copy Portal
+      run: |
+        cp -r data/tables/ portal/_site/data/
+
     - name: Push to IPFS
       if: github.event_name == 'push'
       uses: filebase/ipfs-action@master
       id: ipfs
       with:
-        path: ./data/tables
+        path: portal/_site/
         service: filebase
         pinName: gitcoin-grants-data-portal-tables
         filebaseBucket: gitcoin-grants-data-portal
