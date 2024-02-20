@@ -14,7 +14,7 @@ execute:
 Welcome to your open source, serverless, and local-first Data Platform for Gitcoin Grants Data. With this data hub, we aim to improve data access and empower data scientists to conduct research and guide community driven analysis and decisions!
 
 <center>
-    [Get the Data](https://ipfs.filebase.io/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/){.btn .btn-outline-secondary .btn role="button"}
+    [Get the Data](https://ipfs.filebase.io/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/data){.btn .btn-outline-secondary .btn role="button"}
     [Explore the Catalog](catalog.html){.btn .btn-outline-secondary .btn role="button"}
     [Contribute](https://github.com/davidgasquez/gitcoin-grants-data-portal){.btn .btn-outline-secondary .btn role="button"}
 </center>

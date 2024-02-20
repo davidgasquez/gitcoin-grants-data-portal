@@ -21,14 +21,14 @@ The following command will give you a working URL to explore the available table
 LATEST_IPFS_CID=$(curl https://raw.githubusercontent.com/davidgasquez/gitcoin-grants-data-portal/main/data/IPFS_CID)
 
 # Print the Gateway URL with all the tables
-echo https://ipfs.filebase.io/ipfs/$LATEST_IPFS_CID/
+echo https://ipfs.filebase.io/ipfs/$LATEST_IPFS_CID/data/
 ```
 
 ### 📌 IPNS
 
-You can also go to [`k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc`](https://ipfs.filebase.io/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/), which points to the latest available data via IPNS.
+You can also go to [`ipns://k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/data`](https://ipfs.filebase.io/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/data), which points to the latest available data via IPNS.
 
-You can use IPNS from your favorite tools. E.g: `pd.read_parquet('https://ipfs.filebase.io/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/rounds.parquet')`
+You can use IPNS from your favorite tools. E.g: `pd.read_parquet('https://ipfs.filebase.io/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/data/rounds.parquet')`
 
 ## 📖 Overview
 

@@ -55,9 +55,10 @@ jobs:
       with:
         path: portal/_site
 
-    - name: Copy Portal
+    - name: Copy Data Tables and Database
       run: |
         cp -r data/tables/ portal/_site/data/
+        cp -r data/local.duckdb portal/_site/data/database.duckdb
 
     - name: Push to IPFS
       if: github.event_name == 'push'
