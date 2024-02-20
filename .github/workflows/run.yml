@@ -54,11 +54,13 @@ jobs:
         cp -r portal/_site data/tables/portal
 
     - name: Upload Pages Artifact
+      if: github.event_name == 'push'
       uses: actions/upload-pages-artifact@v3
       with:
         path: portal/_site
 
     - name: Push to IPFS
+      if: github.event_name == 'push'
       uses: filebase/ipfs-action@master
       id: ipfs
       with:
@@ -71,9 +73,11 @@ jobs:
         key: gitcoin-grants-data-portal-db
 
     - name: Update CID file
+      if: github.event_name == 'push'
       run: echo ${{ steps.ipfs.outputs.cid }} > data/IPFS_CID
 
     - name: Commit and Push
+      if: github.event_name == 'push'
       run: |
         git config --global user.name "GitHub Action"
         git config --global user.email "actions@users.noreply.github.com"
@@ -86,6 +90,7 @@ jobs:
         fi
 
   deploy:
+    if: github.event_name == 'push'
     needs: run
 
     permissions:
