@@ -6,11 +6,11 @@ The project covers the code and artifacts to help process Gitcoin Grants data fr
 
 ## ⚙️ How It Works
 
-The portal is a customized instance of [Datadex](https://github.com/davidgasquez/datadex). With each push to `main`, a GitHub action will do the following:
+The portal is a customized instance of [Datadex](https://github.com/davidgasquez/datadex). With each push to `main`, a GitHub action will:
 
-1. Scrape the [Allo Indexer Data API](https://indexer-production.fly.dev/data/) to produce tidy tables like `rounds` or `projects`.
-2. Clean, transform, and join the tables to produce a set of final models.
-3. The models are then exported to Parquet files and pushed to IPFS.
+1. Scraper and ingest data from multiple sources.
+2. Clean, transform, and join the tables to produce a set of final curated models.
+3. Export all the datasets as Parquet files and push them to IPFS.
 
 ## 📦 Key Features
 
@@ -40,23 +40,24 @@ The portal is a customized instance of [Datadex](https://github.com/davidgasquez
 
 ```{ojs}
 ggdp = DuckDBClient.of()
+url = "https://ipfs.io/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/data"
 
 number_of_rounds = ggdp.query(`
     select
         count(id) as c
-    from parquet_scan('${url}/rounds.parquet')
+    from parquet_scan('${url}/allo_rounds.parquet')
 `)
 
 round_votes = ggdp.query(`
     select
         count(id) as c
-    from parquet_scan('${url}/round_votes.parquet')
+    from parquet_scan('${url}/allo_donations.parquet')
 `)
 
 projects = ggdp.query(`
     select
         count(1) as c
-    from parquet_scan('${url}/projects.parquet')
+    from parquet_scan('${url}/allo_projects.parquet')
 `)
 
 round_votes_scalar = round_votes[0]["c"]

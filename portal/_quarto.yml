@@ -11,8 +11,6 @@ website:
         text: Data
       - href: about.qmd
         text: About
-      - href: python-quickstart.ipynb
-        text: Python Quickstart
       - href: catalog.ipynb
         text: Catalog
       - href: dbt

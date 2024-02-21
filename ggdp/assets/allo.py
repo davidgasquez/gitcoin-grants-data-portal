@@ -108,7 +108,7 @@ def raw_allo_donations(indexer_graphql: GrantsStackIndexerGraphQL) -> pd.DataFra
             }
         }
         """
-    response = indexer_graphql.paginated_query(query, size=50000)
+    response = indexer_graphql.paginated_query(query, size=10000)
     df = pd.DataFrame(response).convert_dtypes()
 
     return df
