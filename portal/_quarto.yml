@@ -7,12 +7,10 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: https://ipfs.filebase.io/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/
+      - href: data
         text: Data
       - href: about.qmd
         text: About
-      - href: python-quickstart.ipynb
-        text: Python Quickstart
       - href: catalog.ipynb
         text: Catalog
       - href: dbt

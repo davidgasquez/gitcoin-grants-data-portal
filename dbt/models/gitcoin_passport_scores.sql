@@ -1,5 +1,5 @@
 with source as (
-    select * from {{ source('public', 'raw_passport_scores') }}
+    select * from {{ source('public', 'raw_gitcoin_passport_scores') }}
 ),
 
 renamed as (
