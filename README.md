@@ -4,11 +4,11 @@
 
 # 🌲 Gitcoin Grants Data Portal
 
-[![CI](https://github.com/davidgasquez/gitcoin-grants-data-portal/actions/workflows/ci.yml/badge.svg)](https://github.com/davidgasquez/gitcoin-grants-data-portal/actions/workflows/ci.yml)
+[![CI](https://github.com/davidgasquez/gitcoin-grants-data-portal/actions/workflows/run.yml/badge.svg)](https://github.com/davidgasquez/gitcoin-grants-data-portal/actions/workflows/run.yml)
 
 Open source, serverless, and local-first Data Platform for Gitcoin Grants Data. This data hub improves data access and empower data scientists to conduct research that guides community driven analysis.
 
-![img](https://user-images.githubusercontent.com/1682202/268236925-d44915ab-d46b-49ff-85ec-2ad06bcfe5e0.png)
+![dag](https://github.com/davidgasquez/gitcoin-grants-data-portal/assets/1682202/bca9dcfb-718e-4d73-9576-028f1bfefdde)
 
 ## 📂 Gitcoin Grants Data
 
