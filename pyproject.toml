@@ -3,19 +3,18 @@ name = "ggdp"
 version = "1.0.0"
 authors = [{ name = "David Gasquez" }]
 dependencies = [
-    "altair",
     "aiohttp",
-    "dagster",
     "dagster-dbt",
-    "dagster-duckdb",
     "dagster-duckdb-pandas",
+    "dagster-duckdb",
+    "dagster",
     "dbt-core",
     "dbt-duckdb",
     "duckdb",
     "fsspec",
     "ipykernel",
-    "itables",
     "ipywidgets",
+    "itables",
     "matplotlib",
     "nbclient",
     "nbformat",
@@ -23,7 +22,7 @@ dependencies = [
     "pandas",
     "pyarrow",
     "regex",
-    "retry",
+    "tenacity",
     "tqdm",
 ]
 

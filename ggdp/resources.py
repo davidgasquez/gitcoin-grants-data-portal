@@ -4,6 +4,7 @@ import json
 import pandas as pd
 import requests
 from dagster import ConfigurableResource
+from tenacity import retry, wait_exponential, stop_after_attempt
 
 
 class CovalentAPIResource(ConfigurableResource):
@@ -70,6 +71,10 @@ class DuneResource(ConfigurableResource):
 class GrantsStackIndexerGraphQL(ConfigurableResource):
     ENDPOINT: str = "https://grants-stack-indexer-v2.gitcoin.co/graphql"
 
+    @retry(
+        stop=stop_after_attempt(8),
+        wait=wait_exponential(multiplier=1, min=4, max=10),
+    )
     def query(self, query: str, variables: dict = {}):
         response = requests.post(
             self.ENDPOINT,

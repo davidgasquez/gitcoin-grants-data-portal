@@ -1,7 +1,7 @@
 import pandas as pd
 import requests
-from retry import retry
 from dagster import AssetIn, Backoff, RetryPolicy, asset
+from tenacity import retry, wait_exponential, stop_after_attempt
 
 from ..resources import DuneResource, CovalentAPIResource
 
@@ -50,7 +50,10 @@ def ethereum_project_registry_tx(covalent_api: CovalentAPIResource):
     return combined_df
 
 
-@retry(tries=8, delay=2, backoff=2, max_delay=10)
+@retry(
+    stop=stop_after_attempt(8),
+    wait=wait_exponential(multiplier=1, min=4, max=10),
+)
 def fetch_giveth_projects(url, query):
     all_projects = []
     skip = 0

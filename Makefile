@@ -32,5 +32,5 @@ publish:
 	@quarto publish gh-pages portal --no-prompt
 
 clean:
-	@rm -rf portal/.quarto data/*.parquet data/*.duckdb portal/_site
+	@rm -rf portal/.quarto data/*.parquet data/*.duckdb portal/_site data/tables
 	@rm -rf dbt/target dbt/logs dbt/dbt_packages
