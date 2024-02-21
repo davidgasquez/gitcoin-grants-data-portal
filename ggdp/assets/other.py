@@ -1,6 +1,6 @@
 import pandas as pd
 import requests
-from dagster import AssetIn, Backoff, RetryPolicy, asset
+from dagster import Backoff, RetryPolicy, asset
 from tenacity import retry, wait_exponential, stop_after_attempt
 
 from ..resources import DuneResource, CovalentAPIResource
@@ -8,20 +8,17 @@ from ..resources import DuneResource, CovalentAPIResource
 
 @asset(
     retry_policy=RetryPolicy(max_retries=3, delay=0.2, backoff=Backoff.EXPONENTIAL),
-    ins={"raw_allo_rounds": AssetIn("raw_allo_rounds")},
 )
-def raw_chain_metadata(raw_allo_rounds: pd.DataFrame) -> pd.DataFrame:
+def raw_chain_metadata() -> pd.DataFrame:
     """
     Metadata for chains on which Gitcoin indexer registered at least one round. Source: `chainid.network/chains.json`
     """
-    interesting_chains = raw_allo_rounds.chainId.unique()
 
     df = pd.read_json("https://chainid.network/chains.json")
     df = df.convert_dtypes()
-    df.chainId = df.chainId.astype(str)
-    filtered_df = df[df.chainId.isin(interesting_chains)]
+    df["chainId"] = df["chainId"].astype(str)
 
-    return filtered_df
+    return df
 
 
 @asset(compute_kind="API")
