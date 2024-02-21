@@ -3,33 +3,33 @@ version: 2
 models:
 
 
-  - name : passport_scores
+  - name : gitcoin_passport_scores
     columns:
       - name: address
         tests: ['is_address_lowercase']
 
-  - name: projects
+  - name: allo_projects
     columns:
       - name: chain_id
         tests: ['not_null']
 
-  - name : round_applications
+  - name : allo_applications
     columns:
-      - name: recipient
+      - name: metadata_application_recipient
         tests: ['is_address_lowercase']
 
-  - name : round_votes
+  - name : allo_donations
     columns:
-      - name: voter
+      - name: donor_address
         tests: ['not_null', 'is_address_lowercase']
-      - name: grant_address
+      - name: recipient_address
         tests: ['not_null','is_address_lowercase']
-      - name: token
+      - name: token_address
         tests: ['is_address_lowercase']
 
-  - name : rounds
+  - name : allo_rounds
     columns:
-      - name: program_address
+      - name: round_metadata_program_address
         tests: ['is_address_lowercase']
       - name: id
         tests: ['is_address_lowercase']
