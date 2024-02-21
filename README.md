@@ -26,13 +26,13 @@ echo https://ipfs.filebase.io/ipfs/$LATEST_IPFS_CID/data/
 
 ### 📌 IPNS
 
-You can also go to [`ipns://k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/data`](https://ipfs.filebase.io/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/data), which points to the latest available data via IPNS.
+You can also go to [`https://k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc.ipns.dweb.link/data/`](https://k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc.ipns.dweb.link/data/), which points to the latest available data via IPNS.
 
-You can use IPNS from your favorite tools. E.g: `pd.read_parquet('https://ipfs.filebase.io/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/data/rounds.parquet')`
+You can use IPNS from your favorite tools. E.g: `pd.read_parquet('https://ipfs.filebase.io/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/data/allo_rounds.parquet')`
 
 ## 📖 Overview
 
-The repository contains code and artifacts to help process Gitcoin Grants data from the [Allo Indexer Data API](https://indexer-production.fly.dev/data/). It is an instance of [Datadex](https://github.com/davidgasquez/datadex) allowing you and everyone else to:
+The repository contains code and artifacts to help process Gitcoin Grants data from the [Grants Stack Indexer API](https://github.com/gitcoinco/grants-stack-indexer). It is an instance of [Datadex](https://github.com/davidgasquez/datadex) allowing you and everyone else to:
 
 - Add new data sources to the portal, collaborate on better models (ala Dune) or submit an interesting analysis.
 - All in a permissionless way. Don't ask, fork it and improve the models, add a new source or update any script.
