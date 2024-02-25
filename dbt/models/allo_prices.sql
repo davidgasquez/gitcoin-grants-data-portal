@@ -5,7 +5,7 @@ with source as (
 renamed as (
     select
         blockNumber as block_number,
-        lower(chainId) as chain_id,
+        chainId as chain_id,
         id,
         nodeId as node_id,
         priceInUsd as price_in_usd,

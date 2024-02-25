@@ -5,7 +5,7 @@ with source as (
 renamed as (
     select
         anchorAddress as anchor_address,
-        lower(chainId) as chain_id,
+        chainId as chain_id,
         createdAtBlock as created_at_block,
         createdByAddress as created_by_address,
         lower(id) as id,
