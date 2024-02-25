@@ -31,20 +31,20 @@ def dune_allo_deployments(
     dune.upload_csv(raw_allo_deployments, "allo_contract_deployments")
 
 
-@asset(compute_kind="API")
-def ethereum_project_registry_tx(covalent_api: CovalentAPIResource):
-    """
-    All Ethereum mainnet transactions targeting project registry, from Covalent
-    """
+# @asset(compute_kind="API")
+# def ethereum_project_registry_tx(covalent_api: CovalentAPIResource):
+#     """
+#     All Ethereum mainnet transactions targeting project registry, from Covalent
+#     """
 
-    all_tx = covalent_api.fetch_all_tx_for_address(
-        "eth-mainnet", "0x03506eD3f57892C85DB20C36846e9c808aFe9ef4"
-    )
+#     all_tx = covalent_api.fetch_all_tx_for_address(
+#         "eth-mainnet", "0x03506eD3f57892C85DB20C36846e9c808aFe9ef4"
+#     )
 
-    dataframes = [pd.DataFrame(data.get("items")) for data in all_tx]
-    combined_df = pd.concat(dataframes, ignore_index=True)
+#     dataframes = [pd.DataFrame(data.get("items")) for data in all_tx]
+#     combined_df = pd.concat(dataframes, ignore_index=True)
 
-    return combined_df
+#     return combined_df
 
 
 @retry(
