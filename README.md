@@ -54,9 +54,11 @@ The development environment can also run in your browser thanks to GitHub Codesp
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. There are multiple interesting ways to contribute to this project:
 
-- Add [new data sources](ggdp/assets.py)
+- Propose a new [dataset](https://github.com/davidgasquez/gitcoin-grants-data-portal/issues/new)
+- Add [new data sources](ggdp/assets/allo.py)
 - Improve [dbt project](dbt/) models
 - Write a one off [report](reports/)
+
 
 ### 📄 License
 
