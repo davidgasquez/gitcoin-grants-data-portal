@@ -26,9 +26,9 @@ echo https://ipfs.filebase.io/ipfs/$LATEST_IPFS_CID/data/
 
 ### 📌 IPNS
 
-You can also go to [`ipns://k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc`](https://cloudflare-ipfs.com/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/data/), which points to the latest available data via IPNS.
+You can also go to [`ipns://k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc`](https://k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc.ipns.cf-ipfs.com/data/), which points to the latest available data via IPNS.
 
-You can now read the files from your favorite tools. E.g: `pd.read_parquet('https://cloudflare-ipfs.com/ipns/k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc/data/allo_rounds.parquet')`
+You can now read the files from your favorite tools. E.g: `pd.read_parquet('https://k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc.ipns.cf-ipfs.com/data/allo_rounds.parquet')`
 
 ## 📖 Overview
 
