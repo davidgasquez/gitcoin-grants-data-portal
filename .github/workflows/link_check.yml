@@ -1,0 +1,19 @@
+name: Check Portal for broken links
+on: 
+  schedule:
+    - cron: "10 10 * * 1"
+  workflow_dispatch: # allow manual trigger
+jobs:
+  crawl_for_broken_links:
+    runs-on: ubuntu-latest
+    name: Broken-Links-Crawler
+    steps:
+    - name: Checking links
+      uses: ScholliYT/Broken-Links-Crawler-Action@v3
+      with:
+        website_url: 'https://davidgasquez.github.io/gitcoin-grants-data-portal/'
+        verbose: 'true'
+        exclude_url_contained: 'twitter'
+        max_retry_time: 30
+        max_retries: 5
+        max_depth: 1
