@@ -8,7 +8,7 @@
 
 Open source, serverless, and local-first Data Platform for Gitcoin Grants Data. This data hub improves data access and empower data scientists to conduct research that guides community driven analysis.
 
-![dag](https://github.com/davidgasquez/gitcoin-grants-data-portal/assets/1682202/bca9dcfb-718e-4d73-9576-028f1bfefdde)
+![DAG](https://github.com/davidgasquez/gitcoin-grants-data-portal/assets/1682202/2095974c-f8c4-430b-9c93-dd2a0598127e)
 
 ## 📂 Gitcoin Grants Data
 
