@@ -15,7 +15,6 @@ renamed as (
         donationsEndTime as donations_end_time,
         donationsStartTime as donations_start_time,
         lower(id) as id,
-        isReadyForPayout as is_ready_for_payout,
         managerRole as manager_role,
         matchAmount as match_amount,
         matchAmountInUsd as match_amount_in_usd,

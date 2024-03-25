@@ -54,14 +54,17 @@ def raw_allo_rounds(indexer_graphql: GrantsStackIndexerGraphQL) -> pd.DataFrame:
             createdByAddress
             donationsEndTime
             donationsStartTime
+            fundedAmount
+            fundedAmountInUsd
             id
-            isReadyForPayout
             managerRole
             matchAmount
             matchAmountInUsd
+            matchingDistribution
             matchTokenAddress
             nodeId
             projectId
+            readyForPayoutTransaction
             roundMetadata
             roundMetadataCid
             strategyAddress
