@@ -43,3 +43,7 @@ sources:
         meta:
           dagster:
             asset_key: ["raw_giveth_projects"]
+      - name: raw_hypercert_claims
+        meta:
+          dagster:
+            asset_key: ["raw_hypercert_claims"]
