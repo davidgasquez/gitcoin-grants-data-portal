@@ -47,3 +47,7 @@ sources:
         meta:
           dagster:
             asset_key: ["raw_hypercert_claims"]
+      - name: raw_karmahq_attestations
+        meta:
+          dagster:
+            asset_key: ["raw_karmahq_attestations"]
