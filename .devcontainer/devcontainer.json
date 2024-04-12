@@ -4,6 +4,9 @@
     "dockerfile": "../Dockerfile",
     "context": ".."
   },
+  "features": {
+    "ghcr.io/eitsupi/devcontainer-features/duckdb-cli:1":{}
+  },
   "customizations": {
     "vscode": {
       "settings": {
