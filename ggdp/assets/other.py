@@ -3,7 +3,7 @@ import requests
 from dagster import Backoff, RetryPolicy, asset
 from tenacity import retry, wait_exponential, stop_after_attempt
 
-from ..resources import DuneResource, CovalentAPIResource
+from ..resources import DuneResource
 
 
 @asset(
@@ -150,16 +150,11 @@ def get_hypercerts(gql_endpoint, creator_addresses):
       }
     }
     """
-    payload = {
-        "query": query,
-        "variables": {
-            "creatorAddresses": creator_addresses
-        }
-    }
+    payload = {"query": query, "variables": {"creatorAddresses": creator_addresses}}
 
     response = requests.post(gql_endpoint, json=payload)
     response.raise_for_status()
-    return response.json()['data']['claims']
+    return response.json()["data"]["claims"]
 
 
 @asset
@@ -176,13 +171,63 @@ def raw_hypercert_claims(raw_allo_projects) -> pd.DataFrame:
 
     window_size = 1000
     for start_index in range(0, len(grantees), window_size):
-        window_creators = grantees[start_index:start_index+window_size]
+        window_creators = grantees[start_index : start_index + window_size]
         result = get_hypercerts(HYPERCERTS_ENDPOINT, window_creators)
         all_certs.extend(result)
 
     certs_df = pd.DataFrame(all_certs)
-    certs_df.uri = certs_df.uri.str.replace('ipfs://','')
+    certs_df.uri = certs_df.uri.str.replace("ipfs://", "")
 
     certs_df = certs_df.convert_dtypes()
 
     return certs_df
+
+
+@retry(
+    stop=stop_after_attempt(8),
+    wait=wait_exponential(multiplier=1, min=4, max=10),
+)
+def get_attestations(endpoint, schema):
+    query = """
+    query ($schemaId: SchemaWhereUniqueInput!) {
+        schema(where: $schemaId) {
+            attestations(take:5000) {
+                attester
+                recipient
+                isOffchain
+                timeCreated
+                decodedDataJson
+            }
+        }
+    }
+    """
+    payload = {
+        "query": query,
+        "variables": {"schemaId": {"id": schema}},
+    }
+
+    response = requests.post(endpoint, json=payload)
+    response.raise_for_status()
+
+    return response.json()["data"]["schema"]["attestations"]
+
+
+@asset(compute_kind="EAS")
+def raw_karmahq_attestations():
+    """
+    Attestations made by KarmaHQ on Optimism. Some attesters are also Gitcoin grantees.
+
+    Source: EAS GraphQL api
+    """
+    EAS_OP_ENDPOINT = "https://optimism.easscan.org/graphql"
+    EAS_OP_DETAILS_SCHEMA = (
+        "0x70a3f615f738fc6a4f56100692ada93d947c028b840940d97af7e7d6f0fa0577"
+    )
+    # List of schemas, most attestations don't carry data hance need for `DETAILS`
+    # https://github.com/show-karma/karma-gap-sdk/blob/4789422f1627fa7b575cc66cd0bf20c59ca1038a/core/consts.ts#L45
+
+    from_eas = pd.DataFrame(
+        get_attestations(EAS_OP_ENDPOINT, schema=EAS_OP_DETAILS_SCHEMA)
+    )
+    from_eas = from_eas.convert_dtypes()
+    return from_eas
