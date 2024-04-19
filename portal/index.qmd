@@ -4,17 +4,21 @@ execute:
 ---
 
 <center>
-    <a><img src="https://user-images.githubusercontent.com/1682202/271937380-10d6e036-5fe4-4ea6-b3b4-8e3001c21289.png" width="100px"/></a>
-</center>
-
-<center>
     <h1>Gitcoin Grants Data Portal</h1>
 </center>
 
-Welcome to your open source, serverless, and local-first Data Platform for Gitcoin Grants Data. With this data hub, we aim to improve data access and empower data scientists to conduct research and guide community driven analysis and decisions!
+<br>
+
+<div class="text-center">
+<img src="https://user-images.githubusercontent.com/1682202/271937380-10d6e036-5fe4-4ea6-b3b4-8e3001c21289.png" class="rounded img-fluid w-20" alt="My Happy SVG"/>
+</div>
+
+Open source, serverless, and local-first Data Platform for Grants Data. Access the data you need to conduct research and drive the community forward!
+
+<br>
 
 <center>
-    [Get the Data](https://k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc.ipns.cf-ipfs.com/data/){.btn .btn-outline-secondary .btn role="button"}
-    [Explore the Catalog](catalog.html){.btn .btn-outline-secondary .btn role="button"}
-    [Contribute](https://github.com/davidgasquez/gitcoin-grants-data-portal){.btn .btn-outline-secondary .btn role="button"}
+    <a href="/data" role="button" class="btn btn-primary btn-outline-secondary btn-lg btn-block mx-4">Get the Data</a>
+    <a href="https://github.com/davidgasquez/gitcoin-grants-data-portal" role="button" class="btn btn-primary btn-outline-secondary btn-lg btn-block mx-4">Contribute</a>
+    <a href="catalog.html" role="button" class="btn btn-primary btn-outline-secondary btn-lg btn-block mx-4">Explore the Catalog</a>
 </center>

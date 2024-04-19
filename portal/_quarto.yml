@@ -1,13 +1,18 @@
 project:
   type: website
+  preview:
+    port: 4200
 
 website:
-  title: "Gitcoin Grants Data Portal"
+  title: Gitcoin Grants Data Portal
+  favicon: favicon.ico
+  repo-url: https://github.com/davidgasquez/gitcoin-grants-data-portal
+  repo-actions: [edit, issue]
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - href: https://k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc.ipns.cf-ipfs.com/data/
+      - href: /data
         text: Data
       - href: about.qmd
         text: About
@@ -24,6 +29,8 @@ website:
             url: https://github.com/davidgasquez/gitcoin-grants-data-portal
           - text: Create an Issue
             url: https://github.com/davidgasquez/gitcoin-grants-data-portal/issues/new
+          - text: "Request Dataset"
+            href: https://github.com/davidgasquez/filecoin-data-portal/issues/new
 format:
   html:
     theme:
