@@ -2,23 +2,22 @@ version: 2
 
 models:
 
-
-  - name : gitcoin_passport_scores
-    columns:
-      - name: address
-        tests: ['is_address_lowercase']
-
-  - name: allo_projects
-    columns:
-      - name: chain_id
-        tests: ['not_null']
-
   - name : allo_applications
     columns:
       - name: metadata_application_recipient
         tests: ['is_address_lowercase']
 
+  - name: allo_application_answers
+    description: Responses to application questions, submitted when applying to round.
+
+  - name: allo_deployments
+    description: Official Allo contract deployments.
+    columns:
+      - name: contract
+        tests: ['is_address_lowercase']
+
   - name : allo_donations
+    description: Donations made using Allo v2 protocol. Single on-chain transaction can result in multiple donations.
     columns:
       - name: donor_address
         tests: ['not_null', 'is_address_lowercase']
@@ -27,9 +26,44 @@ models:
       - name: token_address
         tests: ['is_address_lowercase']
 
+  - name: allo_projects
+    description: Projects created by grantees. Single project can apply to multiple rounds.
+    columns:
+      - name: anchor_address
+        description: Global, mutable on-chain identifier of Project, used for escrow and tracking reputation.
+        tests: ['is_address_lowercase']
+      - name: chain_id
+        tests: ['not_null']
+      - name: created_by_address
+        tests: ['is_address_lowercase']
+
   - name : allo_rounds
+    description: Grant rounds created using Allo protocol.
     columns:
       - name: round_metadata_program_address
         tests: ['is_address_lowercase']
       - name: id
         tests: ['is_address_lowercase']
+
+  - name : allo_subscriptions
+    columns:
+      - name: contract_address
+        tests: ['is_address_lowercase']
+
+  - name: chain_metadata
+    description: Information about chains, on which Allo contracts were deployed.
+
+  - name : gitcoin_passport_scores
+    columns:
+      - name: address
+        tests: ['is_address_lowercase']
+
+  - name : hypercert_claims
+    description: Hypercert `claims` created and issued by Gitcoin grantees.
+    columns:
+      - name: contract
+        tests: ['is_address_lowercase']
+      - name: creator
+        tests: ['is_address_lowercase']
+      - name: ipfs_cid
+        description: Points to hypercert metadata hosted on IPFS. Schema of metadata may vary.
