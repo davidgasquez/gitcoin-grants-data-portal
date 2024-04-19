@@ -2,7 +2,6 @@ import json
 
 import pandas as pd
 from dagster import Backoff, RetryPolicy, asset
-from regex import R
 
 from ..resources import GrantsStackIndexerGraphQL
 

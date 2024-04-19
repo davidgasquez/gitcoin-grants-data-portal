@@ -6,7 +6,7 @@ renamed as (
     select
         lower(address) as address,
         chain_name,
-        contract
+        lower(contract) as contract
     from source
 )
 
