@@ -14,6 +14,10 @@ setup:
 	uv venv
 	uv pip install -U -e .[dev]
 	. .venv/bin/activate
+	pipx install harlequin
+
+sql:
+	@harlequin "./data/local.duckdb"
 
 test:
 	@cd dbt && dbt test
