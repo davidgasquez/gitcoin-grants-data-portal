@@ -11,11 +11,11 @@
         "files.associations": {
           "*.sql": "jinja-sql"
         },
-        "python.analysis.autoImportCompletions": true,
-        "python.analysis.typeCheckingMode": "basic",
         "[jinja-sql]": {
           "editor.formatOnSave": false
         },
+        "python.analysis.autoImportCompletions": true,
+        "python.analysis.typeCheckingMode": "basic",
         "[python]": {
           "editor.formatOnSave": true,
           "editor.codeActionsOnSave": {
@@ -36,7 +36,6 @@
         "innoverio.vscode-dbt-power-user",
         "ms-python.python",
         "ms-python.vscode-pylance",
-        "ms-toolsai.datawrangler",
         "ms-toolsai.jupyter",
         "quarto.quarto",
         "redhat.vscode-yaml",
