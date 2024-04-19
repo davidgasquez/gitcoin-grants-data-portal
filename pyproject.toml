@@ -7,7 +7,7 @@ dependencies = [
     "dagster-dbt",
     "dagster-duckdb-pandas",
     "dagster-duckdb",
-    "dagster",
+    "dagster==1.7.1",
     "dbt-core",
     "dbt-duckdb",
     "duckdb",
@@ -37,7 +37,7 @@ Issues = "https://github.com/davidgasquez/gitcoin-grants-data-portal/issues"
 CI = "https://github.com/davidgasquez/gitcoin-grants-data-portal/actions"
 
 [project.optional-dependencies]
-dev = ["dagit", "shandy-sqlfmt[jinjafmt]", "ruff"]
+dev = ["dagit", "harlequin", "ruff"]
 
 [build-system]
 requires = ["setuptools"]

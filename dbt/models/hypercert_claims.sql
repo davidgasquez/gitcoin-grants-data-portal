@@ -8,7 +8,7 @@ renamed as (
         tokenID as token_id,
         lower(contract) as contract,
         uri as ipfs_cid,
-        CAST(totalUnits AS BIGINT) as total_units,
+        try_cast(totalUnits as bigint) as total_units,
         lower(creator) as creator
     from source
 )
