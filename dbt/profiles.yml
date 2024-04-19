@@ -3,8 +3,11 @@ default:
     dev:
       type: duckdb
       path: "../data/local.duckdb"
-      threads: 8
-      external_root: "../data"
+      threads: 16
+      settings:
+        preserve_insertion_order: false
+        enable_object_cache: true
+        enable_http_metadata_cache: true
   target: dev
 
 config:
