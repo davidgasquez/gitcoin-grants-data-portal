@@ -40,7 +40,7 @@ The portal is a customized instance of [Datadex](https://github.com/davidgasquez
 
 ```{ojs}
 ggdp = DuckDBClient.of()
-url = "https://k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc.ipns.cf-ipfs.com/data/"
+url = "https://grantsdataportal.xyz/data/"
 
 number_of_rounds = ggdp.query(`
     select
