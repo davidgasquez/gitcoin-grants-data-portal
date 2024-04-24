@@ -163,3 +163,4 @@ cython_debug/
 data/*
 !data/.gitkeep
 !data/IPFS_CID
+!data/index.html
