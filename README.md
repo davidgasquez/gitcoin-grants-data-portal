@@ -12,7 +12,7 @@ Open source, serverless, and local-first Data Platform for Gitcoin Grants Data. 
 
 ## 📂 Gitcoin Grants Data
 
-Data is living as multiple Parquet files at IPFS! You can get them all at the [IPFS CID](https://raw.githubusercontent.com/davidgasquez/gitcoin-grants-data-portal/main/data/IPFS_CID) pointer available in this repository.
+Datasets are living as Parquet files on IPFS! You can get them all at the [IPFS CID](https://raw.githubusercontent.com/davidgasquez/gitcoin-grants-data-portal/main/data/IPFS_CID) pointer available in this repository, surfaced also in the [Data Portal Data section](https://grantsdataportal.xyz/data/).
 
 The following command will give you a working URL to explore the available tables.
 
@@ -28,7 +28,7 @@ echo https://ipfs.filebase.io/ipfs/$LATEST_IPFS_CID/data/
 
 You can also go to [`ipns://k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc`](https://k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc.ipns.cf-ipfs.com/data/), which points to the latest available data via IPNS.
 
-You can now read the files from your favorite tools. E.g: `pd.read_parquet('https://k51qzi5uqu5dhn3p5xdkp8n6azd4l1mma5zujinkeewhvuh5oq4qvt7etk9tvc.ipns.cf-ipfs.com/data/allo_rounds.parquet')`
+You can now read the files from your favorite tools. E.g: `pd.read_parquet('https://grantsdataportal.xyz/data/allo_rounds.parquet')`
 
 ## 📖 Overview
 
@@ -58,7 +58,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 - Add [new data sources](ggdp/assets/allo.py)
 - Improve [dbt project](dbt/) models
 - Write a one off [report](reports/)
-
 
 ### 📄 License
 

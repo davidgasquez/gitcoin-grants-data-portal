@@ -4,6 +4,8 @@ import pandas as pd
 from dagster import Backoff, RetryPolicy, asset
 
 from ..resources import GrantsStackIndexerGraphQL
+import requests
+import io
 
 
 @asset
@@ -215,7 +217,10 @@ def raw_allo_deployments() -> pd.DataFrame:
     Canonical source: https://github.com/allo-protocol/allo-contracts/blob/main/docs/CHAINS.md
     Ingestion logic: https://gist.github.com/DistributedDoge/57e39c3e5cc207fcafdf4d377562ec33
     """
-    ipfs_content = pd.read_parquet(
+
+    response = requests.get(
         "https://ipfs.io/ipfs/QmWpnErRwVRLqdGsBC2J9NMngwzJtWErDZvf6wDqJ1ZVis"
     )
-    return ipfs_content
+    response.raise_for_status()
+
+    return pd.read_parquet(io.BytesIO(response.content))
