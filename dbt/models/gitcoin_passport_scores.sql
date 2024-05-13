@@ -4,15 +4,19 @@ with source as (
 
 renamed as (
     select
-        lower(address) as address,
+        id,
+        passport ->> 'address' as address,
+        passport ->> 'community' as community,
         score,
-        status,
         last_score_timestamp,
-        json_extract_string(evidence, '$.type') as evidence_type,
-        json_extract_string(evidence, '$.success') as evidence_success,
-        json_extract_string(evidence, '$.rawScore') as evidence_raw_score,
-        json_extract_string(evidence, '$.threshold') as evidence_threshold,
+        status,
+        error,
+        evidence ->> 'type' as evidence_type,
+        evidence ->> 'success' as evidence_success,
+        evidence ->> 'rawScore' as evidence_raw_score,
+        evidence ->> 'threshold' as evidence_threshold,
+        stamp_scores
     from source
 )
 
-select * from renamed
+select * from renamed order by last_score_timestamp desc

@@ -37,7 +37,7 @@ Issues = "https://github.com/davidgasquez/gitcoin-grants-data-portal/issues"
 CI = "https://github.com/davidgasquez/gitcoin-grants-data-portal/actions"
 
 [project.optional-dependencies]
-dev = ["dagit", "harlequin", "ruff"]
+dev = ["dagster-webserver", "harlequin", "ruff"]
 
 [build-system]
 requires = ["setuptools"]

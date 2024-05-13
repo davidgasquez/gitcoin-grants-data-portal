@@ -1,7 +1,14 @@
 import pandas as pd
 import requests
-from dagster import Backoff, RetryPolicy, asset
+from dagster import (
+    Backoff,
+    RetryPolicy,
+    MaterializeResult,
+    AssetExecutionContext,
+    asset,
+)
 from tenacity import retry, wait_exponential, stop_after_attempt
+from dagster_duckdb import DuckDBResource
 
 from ..resources import DuneResource
 
@@ -120,16 +127,24 @@ def raw_discourse_categories():
 
 
 @asset
-def raw_gitcoin_passport_scores() -> pd.DataFrame:
-    file_url = "https://indexer-production.fly.dev/data/passport_scores.json"
-    df = pd.read_json(file_url)
-    df = df.drop(columns=["error", "stamp_scores"])
-
-    df["last_score_timestamp"] = pd.to_datetime(
-        df["last_score_timestamp"], errors="coerce"
+def raw_gitcoin_passport_scores(
+    context: AssetExecutionContext, duckdb: DuckDBResource
+) -> MaterializeResult:
+    passport_scores_json = (
+        "https://public.scorer.gitcoin.co/passport_scores/registry_score.jsonl"
     )
 
-    return df[df["address"].str.startswith("0x")]
+    table_name = context.asset_key.to_user_string()
+
+    query = f"""
+    create or replace table public.{table_name} as
+    select * from read_json_auto('{passport_scores_json}')
+    """
+
+    with duckdb.get_connection() as conn:
+        conn.execute(query)
+
+    return MaterializeResult()
 
 
 @retry(
