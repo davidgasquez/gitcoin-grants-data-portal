@@ -55,7 +55,7 @@ jobs:
         make render
 
     - name: Upload Pages Artifact
-      if: github.event_name == 'push'
+      if: github.event_name == 'push' || github.event_name == 'schedule'
       uses: actions/upload-pages-artifact@v3
       with:
         path: portal/_site
@@ -66,7 +66,7 @@ jobs:
         cp -r data/local.duckdb portal/_site/data/database.duckdb
 
     - name: Push to IPFS
-      if: github.event_name == 'push'
+      if: github.event_name == 'push' || github.event_name == 'schedule'
       uses: filebase/ipfs-action@master
       id: ipfs
       with:
@@ -79,11 +79,11 @@ jobs:
         key: gitcoin-grants-data-portal-db
 
     - name: Update CID file
-      if: github.event_name == 'push'
+      if: github.event_name == 'push' || github.event_name == 'schedule'
       run: echo ${{ steps.ipfs.outputs.cid }} > data/IPFS_CID
 
     - name: Commit and Push
-      if: github.event_name == 'push'
+      if: github.event_name == 'push' || github.event_name == 'schedule'
       run: |
         git config --global user.name "GitHub Action"
         git config --global user.email "actions@users.noreply.github.com"
@@ -96,7 +96,7 @@ jobs:
         fi
 
   deploy:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'schedule'
     needs: run
 
     permissions:
