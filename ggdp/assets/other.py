@@ -172,30 +172,31 @@ def get_hypercerts(gql_endpoint, creator_addresses):
     return response.json()["data"]["claims"]
 
 
-@asset
-def raw_hypercert_claims(raw_allo_projects) -> pd.DataFrame:
-    """
-    Listing of hypercerts created by Allo Grantees
+# disabled due to https://github.com/davidgasquez/gitcoin-grants-data-portal/issues/88
+# @asset
+# def raw_hypercert_claims(raw_allo_projects) -> pd.DataFrame:
+#     """
+#     Listing of hypercerts created by Allo Grantees
 
-    Source: https://thegraph.com/hosted-service/subgraph/hypercerts-admin/hypercerts-optimism-mainnet
-    """
-    HYPERCERTS_ENDPOINT = "https://api.thegraph.com/subgraphs/name/hypercerts-admin/hypercerts-optimism-mainnet"
-    grantees = list(raw_allo_projects.createdByAddress.str.lower().unique())
+#     Source: https://thegraph.com/hosted-service/subgraph/hypercerts-admin/hypercerts-optimism-mainnet
+#     """
+#     HYPERCERTS_ENDPOINT = "https://api.thegraph.com/subgraphs/name/hypercerts-admin/hypercerts-optimism-mainnet"
+#     grantees = list(raw_allo_projects.createdByAddress.str.lower().unique())
 
-    all_certs = []
+#     all_certs = []
 
-    window_size = 1000
-    for start_index in range(0, len(grantees), window_size):
-        window_creators = grantees[start_index : start_index + window_size]
-        result = get_hypercerts(HYPERCERTS_ENDPOINT, window_creators)
-        all_certs.extend(result)
+#     window_size = 1000
+#     for start_index in range(0, len(grantees), window_size):
+#         window_creators = grantees[start_index : start_index + window_size]
+#         result = get_hypercerts(HYPERCERTS_ENDPOINT, window_creators)
+#         all_certs.extend(result)
 
-    certs_df = pd.DataFrame(all_certs)
-    certs_df.uri = certs_df.uri.str.replace("ipfs://", "")
+#     certs_df = pd.DataFrame(all_certs)
+#     certs_df.uri = certs_df.uri.str.replace("ipfs://", "")
 
-    certs_df = certs_df.convert_dtypes()
+#     certs_df = certs_df.convert_dtypes()
 
-    return certs_df
+#     return certs_df
 
 
 @retry(
