@@ -12,7 +12,7 @@
 >
 > Gitcoin sunset Grants Labs and Grants Stack on **May 31, 2025**. Hosted apps are no longer maintained.
 >
-> For *current and broader* Gitcoin data, use **[Open Source Observer](https://www.opensource.observer/)** and the [OSO datasets docs](https://docs.opensource.observer/docs/integrate/datasets/#gitcoin).
+> For *current and broader* Gitcoin data, use **[Open Source Observer](https://www.opensource.observer/)** and the [OSO datasets docs](https://docs.opensource.observer/docs/developer/integrate/datasets/#gitcoin).
 >
 > Background: [Focusing Gitcoin's Future: Sunsetting Grants Stack](https://gov.gitcoin.co/t/focusing-gitcoins-future-sunsetting-grants-stack-eol-may-2025/20333/).
 >
